@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+    }
+
+    #div_id1:hover+#div_id2,
+    #div_id2:hover {
+        display: inline-block;
+    }
+
+    #div_id2 {
+        display: none;
+    }
+
+    #div_id1:hover,
+    #div_id2:hover {
+        background-color: red;
+    }
+</style>
+<script>
+    const util = {
+        set_id1_color: function (clr) {
+            document.querySelector("#div_id1").style.background = clr;
+        },
+
+        open_new_window: function (url) {
+            window.open(url);
+        }
+    };
+</script>
+
+<body>
+    <label for="textArea">textArea</label>
+    <input type='text' id='textArea' value='aaa' /><br><br>
+    <input type='button' name='popup' value='popup' onclick='util.open_new_window("popup-1.html");' /><br><br>
+    <div id="div_id1" onmouseenter="util.set_id1_color('red');" onmouseleave="util.set_id1_color('green');"></div>
+    <div id="div_id2" onmouseenter="util.set_id1_color('red');" onmouseleave="util.set_id1_color('green');"></div>
+</body>
+
+</html>

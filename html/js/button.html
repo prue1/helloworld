@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+  function doClick() {
+    document.querySelector(".div2").classList.toggle("move-to")
+  }
+
+  function doClick2() {
+    doClick()
+  }
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  .item-size {
+    width: 100px;
+    height: 100px;
+  }
+
+  .container {
+    position: absolute;
+  }
+
+  .div1 {
+    position: absolute;
+    background-color: orange;
+  }
+
+  .div2 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: red;
+    transition: left 0.5s;
+  }
+
+  .move-to {
+    top: 0px;
+    left: 100px;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="item-size div2" onclick="doClick2()"></div>
+    <div class="item-size div1" onclick="doClick()"></div>
+  </div>
+</body>
+
+</html>

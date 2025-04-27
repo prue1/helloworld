@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>events</title>
+</head>
+
+<script>
+  function setup() {
+    // 1.先補捉(capture)再冒泡(bubbling)
+    // 2. true:  將handler加到capture階段，
+    //    false: 將handler加到bubbling階段
+    document.querySelector("#div-container-1").addEventListener("click", handler, false)
+    document.querySelector("#div-container-2").addEventListener("click", handler, false)
+    document.querySelector("#div-container-3").addEventListener("click", handler, false)
+    document.querySelector("#div-container-4").addEventListener("click", handler, false)
+    document.querySelector("#div-container-5").addEventListener("click", handler, false)
+    document.querySelector("#div1").addEventListener("click", handler, false)
+    document.querySelector("#div2").addEventListener("click", handler, false)
+  }
+
+  function handleCB(event, el, id) {
+    event.stopPropagation()
+    document.querySelector("#" + id).removeEventListener('click', handler, !el.checked);
+    document.querySelector("#" + id).addEventListener("click", handler, el.checked)
+  }
+
+  function handler(event) {
+    console.log(event.currentTarget.id)
+  }
+</script>
+<style>
+  body {
+    margin: 0px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  #div-container-1 {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 400px;
+    height: 300px;
+    background-color: red;
+  }
+
+  #div-container-2 {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 370px;
+    height: 270px;
+    background-color: orange;
+  }
+
+  #div-container-3 {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 340px;
+    height: 240px;
+    background-color: yellow;
+  }
+
+  #div-container-4 {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 310px;
+    height: 210px;
+    background-color: green;
+  }
+
+  #div-container-5 {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 280px;
+    height: 180px;
+    background-color: skyblue;
+  }
+
+  #div1 {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 50px;
+    height: 50px;
+    background-color: plum;
+  }
+
+  #div2 {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 50px;
+    height: 50px;
+    background-color: purple;
+  }
+
+  #div-container-a {
+    width: 300px;
+    height: 100px;
+    background-color: transparent;
+    border: 5px solid yellowgreen;
+  }
+
+  span {
+    font-family: "Liberation Sans";
+  }
+
+  .tag-msg {
+    position: absolute;
+    right: 3px;
+    bottom: 3px;
+    background-color: white;
+    pointer-events: none;
+    padding: 0px 3px;
+    border-bottom: 5px solid gold;
+    -webkit-user-select: none;
+    user-select: none;
+    font-family: consolas;
+  }
+
+  input[type='checkbox'] {
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+  }
+</style>
+
+<body onload="setup()">
+  <div id="div-container-1">
+    <span class="tag-msg">div-container-1</span>
+    <input type="checkbox" onclick="handleCB(event, this, 'div-container-1')" />
+    <div id="div-container-2">
+      <span class="tag-msg">div-container-2</span>
+      <input type="checkbox" onclick="handleCB(event, this, 'div-container-2')" />
+      <div id="div-container-3">
+        <span class="tag-msg">div-container-3</span>
+        <input type="checkbox" onclick="handleCB(event, this, 'div-container-3')" />
+        <div id="div-container-4">
+          <span class="tag-msg">div-container-4</span>
+          <input type="checkbox" onclick="handleCB(event, this, 'div-container-4')" />
+          <div id="div-container-5">
+            <span class="tag-msg">div-container-5</span>
+            <input type="checkbox" onclick="handleCB(event, this, 'div-container-5')" />
+            <div id="div1"><span class="tag-msg">div1</span></div>
+            <div id="div2"><span class="tag-msg">div2</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="div-container-a">
+    <span>1.先補捉(capture)再冒泡(bubbling)</span><br>
+    <span>2.true: event將在capture階段觸發，</span><br>
+    <span>false: event將在bubbling階段觸發</span>
+  </div>
+</body>
+
+</html>

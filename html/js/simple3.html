@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script src='../jquery-3.7.1.js'></script>
+<script>
+  let count = 0;
+  function doClick() {
+    count++
+    $("#msg").text(count)
+    $("#btn_click").prop('value', 'click(' + count + ')')
+  }
+
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+</style>
+
+<body>
+  <div>
+    <span id="msg">0</span><br>
+    <input type="button" id="btn_click" value="click(0)" onclick="doClick()" />
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>js prototype</title>
+</head>
+<script>
+  let handler;
+  function Handler() {
+    this.a = 3
+    this.do_click = (el) => {
+      console.log(el.id)
+    }
+  }
+
+  handler = new Handler();
+  console.log(handler)
+
+  Handler() // 單獨執行function (非透過new關鍵字)時, 則其中的 this 會指向 Global
+  console.log('a=' + a) // 雖然未宣告變數a, 但仍可由 Global 取得變數a的值, 3
+  a++ // 將Global中的變數a加1
+  console.log('a=' + a) // 4
+  console.log('obj.a=' + handler.a)
+  console.log('obj.b=' + handler.b) // undefined, handler物件未包含屬性 b
+  //----
+  Handler.prototype.b = 5 // 在Handler建構子中, 新增一個屬性 b
+  handler = new Handler(); // 新物件將會擁有屬性 b
+  console.log('obj.b=' + handler.b) // 5
+  console.log(handler)
+</script>
+
+<style>
+  #div1 {
+    width: 100px;
+    height: 100px;
+    background-color: yellowgreen;
+  }
+
+  #div2 {
+    width: 100px;
+    height: 100px;
+    background-color: violet;
+  }
+</style>
+
+<body>
+  <div id="div1" onclick="do_click(this)">
+  </div>
+  <div id="div2" onclick="do_click(this)">
+  </div>
+</body>
+
+</html>

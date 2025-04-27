@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>template-string</title>
+</head>
+
+<script>
+  let id = 0
+  let count = 0
+  function gen(value) {
+    return `<div>
+            <input type='checkbox' id='cb${value}' name='cb${value}' value='${value}' onclick='console.log(this.value)'/>
+            <label for='cb${value}'>cb${value}</label>
+            </div>`
+  }
+
+  function add() {
+    id++
+    const el = document.querySelector('#container')
+    el.innerHTML += gen(id)
+  }
+
+  function clearr() {
+    const el = document.querySelector('#container')
+    el.innerHTML = ''
+  }
+</script>
+
+<style>
+  label {
+    color: gold;
+    background-color: red;
+  }
+
+  * {
+    font-family: 'Liberation Sans';
+  }
+</style>
+
+<body>
+  <input type="button" value="add" onclick="add()" />
+  <input type="button" value="clearr" onclick="clearr()" />
+  <div id="container">
+  </div>
+
+</body>
+
+</html>

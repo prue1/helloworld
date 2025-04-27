@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+  let interval = 20
+  let i = 0
+  let si = setInterval(() => {
+    i++
+    if (i > 100) {
+      stop()
+    } else {
+      move(i)
+    }
+  }, interval)
+
+  function getMessage(color, msg) {
+    return `<span style="color:${color}">${msg}</span>`
+  }
+
+  function move(a) {
+    let s = document.querySelector(".div1")
+    s.style.left = a + 'px'
+    s.innerHTML = getMessage('green', 'moving...')
+  }
+
+  function stop() {
+    clearInterval(si);
+    let s = document.querySelector(".div1")
+    s.innerHTML = getMessage('red', 'stopped!')
+  }
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .div1 {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 0;
+    border: 3px solid gold;
+    padding: 5px;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="div1"></div>
+  </div>
+</body>
+
+</html>

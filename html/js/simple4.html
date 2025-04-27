@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script src='../jquery-3.7.1.js'></script>
+<script>
+  const size = ["25px", "50px", "100px"]
+  const colors = ["blue", "red"]
+  let idx1 = 0;
+  let idx2 = 0;
+  function doClick() {
+    $("#div1").css("width", size[idx1])
+    $("#div1").css("height", size[idx1])
+    $("#div1").css("background-color", colors[idx2])
+
+    $("#button").css("color", colors[idx2])
+
+    idx1++
+    idx1 = idx1 % size.length
+    idx2++
+    idx2 = idx2 % colors.length
+  }
+</script>
+
+<style>
+</style>
+
+<body>
+  <div>
+    <input id="button" type="button" value="click" onclick="doClick()" />
+  </div>
+  <div id="div1">
+  </div>
+</body>
+
+</html>

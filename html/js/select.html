@@ -1,0 +1,327 @@
+<meta charset="UTF-8">
+<title>select swap</title>
+<html>
+<script>
+  const obj1 = {
+    "apple": "Apple",
+    "orange": "Orange",
+    "watermelon": "Watermelon",
+    "tangerine": "Tangerine",
+    "cherry": "Cherry",
+    "banana": "Banana",
+  }
+
+  const obj2 = {
+    "graphes": "Graphes",
+    "pear": "Pear",
+    "lemon": "Lemon",
+    "melon": "Melon",
+  }
+
+  let is_display_sn = false;
+  const default_color = '#ff1aff';
+
+  function to_right() {
+    const s1 = document.getElementById("fruits1");
+    const s2 = document.getElementById("fruits2");
+    const options = s1.options;
+    let i = 0;
+    while (i < options.length) {
+      if (options[i].selected) {
+        //const opt = options[i];
+        s2.options.add(options[i]);
+      } else {
+        i++;
+      }
+    }
+
+    if (is_display_sn) {
+      re_serialno("fruits1");
+      re_serialno("fruits2");
+    }
+  }
+
+  function to_left() {
+    const s1 = document.getElementById("fruits1");
+    const s2 = document.getElementById("fruits2");
+    const options = s2.options;
+    let i = 0;
+    while (i < options.length) {
+      if (options[i].selected) {
+        //const opt = options[i];
+        s1.options.add(options[i]);
+      } else {
+        i++;
+      }
+    }
+
+    if (is_display_sn) {
+      re_serialno("fruits1");
+      re_serialno("fruits2");
+    }
+  }
+
+  function to_bottom(selid) {
+    const sel = document.getElementById(selid);
+    const options = sel.options;
+    const arr = [];
+    let idx = 0;
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+        arr[idx] = options[i];
+        idx++;
+      }
+    }
+
+    for (let j = 0; j < arr.length; j++) {
+      options.add(arr[j]);
+    }
+
+    if (is_display_sn) {
+      re_serialno(selid);
+    }
+  }
+
+  function to_top(selid) {
+    const sel = document.getElementById(selid);
+    const options = sel.options;
+    const arr = [];
+    let idx = 0;
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+        arr[idx] = options[i];
+        idx++;
+      }
+    }
+
+    for (var j = arr.length - 1; j >= 0; j--) {
+      options.add(arr[j], 0);
+    }
+
+    if (is_display_sn) {
+      re_serialno(selid);
+    }
+  }
+
+  function up(selid) {
+    const sel = document.getElementById(selid);
+    const options = sel.options;
+    if (!options[0].selected) {
+      for (let i = 0; i < options.length; i++) {
+        if (options[i].selected) {
+          let opt = options[i];
+          options.remove(i);
+          options.add(opt, i - 1);
+        }
+      }
+    }
+
+    if (is_display_sn) {
+      re_serialno(selid);
+    }
+  }
+
+  function down(selid) {
+    const sel = document.getElementById(selid);
+    const options = sel.options;
+    if (!options[options.length - 1].selected) {
+      for (let i = options.length - 1; i >= 0; i--) {
+        if (options[i].selected) {
+          let opt = options[i];
+          options.remove(i);
+          options.add(opt, i + 1);
+        }
+      }
+    }
+
+    if (is_display_sn) {
+      re_serialno(selid);
+    }
+  }
+
+  function re_serialno(selid) {
+    const sel = document.getElementById(selid);
+    const options = sel.options;
+    for (let i = 0; i < options.length; i++) {
+      let text = options[i].text;
+      options[i].text = (i + 1) + "." + text.substring(text.indexOf(".") + 1);
+    }
+  }
+
+  function turn_display_sn_on() {
+    if (is_display_sn) {
+      return;
+    }
+    
+    is_display_sn = true;
+    const selids = ['fruits1', 'fruits2'];
+    selids.forEach((selid) => {
+      const sel = document.getElementById(selid);
+      const options = sel.options;
+      for (let i = 0; i < options.length; i++) {
+        let text = options[i].text;
+        options[i].text = (i + 1) + "." + text;
+      }
+    });
+  }
+
+  function turn_display_sn_off() {
+    if (!is_display_sn) {
+      return;
+    }
+
+    is_display_sn = false;
+    const selids = ['fruits1', 'fruits2'];
+    selids.forEach((selid) => {
+      const sel = document.getElementById(selid);
+      const options = sel.options;
+      for (let i = 0; i < options.length; i++) {
+        let text = options[i].text;
+        options[i].text = text.substring(text.indexOf(".") + 1);
+      }
+    });
+  }
+
+  function change_color() {
+    const color = document.getElementById('color_list').value;
+    const selids = ['fruits1', 'fruits2'];
+    selids.forEach((selid) => {
+      const sel = document.getElementById(selid);
+      const options = sel.options;
+      for (var i = 0; i < options.length; i++) {
+        options[i].style.color = color;
+      }
+    });
+  }
+
+  function init_select(selid, obj) {
+    const sel = document.getElementById(selid);
+    const options = sel.options;
+    for (let key in obj) {
+      let c = document.createElement("option");
+      c.value = key;
+      c.text = obj[key];
+      c.style.color = default_color;
+      options.add(c);
+    }
+
+    if (is_display_sn) {
+      re_serialno(selid);
+    }
+  }
+
+  function init_display_sn() {
+    if (is_display_sn) {
+      document.getElementById('display_sn_on').checked = true;
+      console.log('display sn on');
+    } else {
+      document.getElementById('display_sn_off').checked = true;
+      console.log('display sn off');
+    }
+  }
+
+  function setup() {
+    init_select('fruits1', obj1);
+    init_select('fruits2', obj2);
+    init_display_sn();
+
+    document.getElementById('color_list').value = default_color;
+  }
+</script>
+
+<style>
+  body {
+    font-family: consolas;
+    font-size: 1em;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .div1 {
+    width: 170px;
+    height: 300px;
+    text-align: center;
+  }
+
+  .div2 {
+    width: 150px;
+    height: 290px;
+    text-align: center;
+    padding: 5px;
+  }
+
+  .list_select {
+    width: 170px;
+    height: 300px;
+    font-size: 1em;
+    font-family: consolas;
+    border-radius: 10px 0 0 10px;
+    padding: 3px 3px 3px 10px;
+  }
+
+  input[type="button"] {
+    font-size: 1em;
+    font-family: consolas;
+    border-radius: 10px 0 0 0;
+  }
+
+  input[type="button"]:hover {
+    background-color: blue;
+    color: white;
+  }
+
+  .margin5 {
+    margin: 5px;
+  }
+
+  .color_list {
+    width: 100px;
+  }
+</style>
+
+<body onload="setup()">
+  <div class="margin5">
+    display sn:
+    <input type="radio" id="display_sn_on" name="display_sn" value="0" onclick="turn_display_sn_on()" />
+    <label for="display_sn_on">On</label>
+    <input type="radio" id="display_sn_off" name="display_sn" value="1" onclick="turn_display_sn_off()" />
+    <label for="display_sn_off">Off</label><br>
+  </div>
+  <div class="margin5">
+    <label for="color_list">Text Color:</label>
+    <select name="color_list" id="color_list" class="color_list" onchange="change_color()">
+      <option value="red">red</option>
+      <option value="green">green</option>
+      <option value="blue">blue</option>
+      <option value="#ff1aff">#ff1aff</option>
+    </select>
+  </div>
+
+  <div class="container margin5"">
+        <div class=" div1">
+    <select name="fruits1" id="fruits1" class="list_select" multiple ondblclick="to_right()">
+    </select>
+  </div>
+  <div class="div2">
+    <input type="button" class="margin5" name="toRight" value="to Right->" onclick="to_right()" /><br>
+    <input type="button" class="margin5" name="toLeft" value="<-to Left" onclick="to_left()" /><br><br>
+    <input type="button" class="margin5" name="toTop" value="to Top" onclick="to_top('fruits1')" /><br>
+    <input type="button" class="margin5" name="toBottom" value="to Bottom" onclick="to_bottom('fruits1')" /><br><br>
+    <input type="button" class="margin5" name="up" value="Up" onclick="up('fruits1')" /><br>
+    <input type="button" class="margin5" name="down" value="Down" onclick="down('fruits1')" />
+  </div>
+  <div class="div1">
+    <select name="fruits2" id="fruits2" class="list_select" multiple ondblclick="to_left()"></select>
+  </div>
+  <div class="div2">
+    <input type="button" class="margin5" name="toTop" value="to Top" onclick="to_top('fruits2')" /><br>
+    <input type="button" class="margin5" name="toBottom" value="to Bottom" onclick="to_bottom('fruits2')" /><br><br>
+    <input type="button" class="margin5" name="up" value="Up" onclick="up('fruits2')" /><br>
+    <input type="button" class="margin5" name="down" value="Down" onclick="down('fruits2')" />
+  </div>
+  </div>
+</body>
+
+</html>

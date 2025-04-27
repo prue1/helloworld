@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>mouse-pointer</title>
+</head>
+
+<script src='../jquery-3.7.1.js'></script>
+<script>
+  function mousemove(event) {
+    disp(event)
+    event.stopPropagation();
+  }
+
+  function disp(event) {
+    $('#screen').html('(' + event.screenX + ',' + event.screenY + ')')
+    $('#page').html('(' + event.pageX + ',' + event.pageY + ')')
+    $('#viewport').html('(' + event.clientX + ',' + event.clientY + ')')
+    $('#offset').html('(' + event.offsetX + ',' + event.offsetY + ')')
+    $('#targetId').html(event.target.id ? event.target.id : '&nbsp;')
+    $('#targetObject').html(event.target.toString())
+  }
+
+  function mousemove2(event) {
+    $('#span2').html('(' + event.offsetX + ',' + event.offsetY + ')')
+    event.stopPropagation();
+  }
+</script>
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0px;
+  }
+
+  p#p1 {
+    display: inline-block;
+    background-color: yellowgreen;
+  }
+
+  body {
+    border-left: 20px dashed lightseagreen;
+    border-right: 20px dashed lightseagreen;
+  }
+
+  #disp {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    font-family: consolas, PMingLiu;
+    border: 5px solid red;
+    background-color: white;
+    box-shadow: 5px 5px 5px darkred;
+    /* pointer-events: none; */
+  }
+
+  .name {
+    /* 可設定寬高，但不會換行 */
+    display: inline-block;
+    width: 200px;
+    background-color: lightblue;
+    text-align: right;
+    padding: 0 5px;
+  }
+
+  .content {
+    display: inline-block;
+    width: 300px;
+    background-color: gold;
+    padding: 0 5px;
+  }
+
+  /* ------------------------------------ */
+  .div2 {
+    position: relative;
+    top: 150px;
+    left: 300px;
+    width: 200px;
+    height: 100px;
+    background-color: rgb(229, 161, 14);
+    padding: 10px;
+    box-shadow: 5px 5px 5px cornflowerblue;
+    border: 5px solid blue;
+  }
+
+  #span2 {
+    pointer-events: none;
+    background-color: gold;
+  }
+
+  /* ------------------------------------ */
+  #div32 {
+    position: absolute;
+    width: 100px;
+    height: 50px;
+    background-color: blue;
+  }
+</style>
+
+<body onmousemove="mousemove(event)">
+  <div id="disp" onmousemove="mousemove(event)">
+    <div><span class="name">screen(螢幕):</span><span id="screen" class="content">---</span></div>
+    <div><span class="name">viewport(可見視窗):</span><span id="viewport" class="content">---</span></div>
+    <div><span class="name">page(整個文件):</span><span id="page" class="content">---</span></div>
+    <div><span class="name">offset(target元件):</span><span id="offset" class="content">---</span></div>
+    <div><span class="name">target id(元件id):</span><span id="targetId" class="content">---</span></div>
+    <div><span class="name">target object(型別):</span><span id="targetObject" class="content">---</span></div>
+  </div>
+  <br><br><br><br><br><br><br><br><br>
+  <p id="p1" onmousemove="mousemove(event)" style="font-size: 2em;">Mouse Pointer</p>
+  <div id="div2" class="div2" onmousemove="mousemove2(event)">
+    <span id=span2>(---,---)</span>
+  </div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <div id="div32"></div>
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+  function setButton() {
+    document.querySelector("#btnTrans").value = `過場動畫${(transition ? '(on)' : '(off)')}`
+  }
+
+  let playing = false
+  function handle(a) {
+    if (!playing) {
+      playing = true
+      if (!move(a)) {
+        playing = false
+      }
+    }
+  }
+
+  let transition = true
+  let tx = 0
+  function move(a) {
+    let temp = tx + a
+    if (temp >= 0 && temp <= 500) {
+      moveAll(tx = temp)
+      if (transition) {
+        setTransition(a)
+      }
+      else {
+        playing = false;
+      }
+
+      return true
+    }
+
+    return false
+  }
+
+  function moveAll(a) {
+    const s = document.querySelectorAll('.ele')
+    s.forEach((e) => {
+      e.style.left = `${a}px`
+    })
+  }
+
+  function change() {
+    transition = !transition
+    setButton()
+  }
+
+  function setTransition(a) {
+    document.querySelector("#btnTrans").disabled = true
+    const s = document.querySelectorAll('.ele')
+    s.forEach((e) => {
+      e.style.transition = `left ${Math.abs(a) * 0.005}s linear 0s`
+      // => 'transition-property transition-duration transition-timing-function transition-delay'
+      // 注意:字串template外面用的是--與波浪線(~)同鍵的(`)，不是單引號(')。
+      // 裏面用 ${}
+    })
+    s[s.length - 1].addEventListener('transitionend', end)
+  }
+
+  function unsetTransition() {
+    const s = document.querySelectorAll('.ele')
+    s.forEach((e) => {
+      e.style.transition = ''
+    })
+    s[s.length - 1].removeEventListener('transitionend', end)
+    document.querySelector("#btnTrans").disabled = false
+  }
+
+  function end() {
+    unsetTransition()
+    playing = false
+  }
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: consolas;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .ele {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    left: 0px;
+    border-radius: 10px;
+  }
+</style>
+
+<body onload="setButton()">
+  <input type="button" value="<<< 50" onclick="handle(-50)" />
+  <input type="button" value="<< 25" onclick="handle(-25)" />
+  <input type="button" value="< 10" onclick="handle(-10)" />&nbsp;&nbsp;&nbsp;
+  <input type="button" value="10 >" onclick="handle(10)" />
+  <input type="button" value="25 >>" onclick="handle(25)" />
+  <input type="button" value="50 >>>" onclick="handle(50)" />
+  <input type="button" id="btnTrans" value="過場動畫" onclick="change()" />
+  <div class="container">
+    <div class="ele" style="background-color: red; top:0px;"></div>
+    <div class="ele" style="background-color: orange; top:50px;"></div>
+    <div class="ele" style="background-color: yellowgreen; top:100px;"></div>
+  </div>
+</body>
+
+</html>

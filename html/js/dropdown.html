@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script src='../jquery-3.7.1.js'></script>
+<script>
+
+  function mouse_enter(menu_id, sub_menu_id) {
+    document.querySelector('#' + menu_id).classList.add("menu-entered"); // javascript 語法
+    document.querySelector('#' + sub_menu_id).classList.remove("display-none");
+  }
+
+  function mouse_leave(menu_id, sub_menu_id) {
+    $('#' + menu_id).removeClass("menu-entered"); // jQuery 語法
+    $('#' + sub_menu_id).addClass("display-none");
+  }
+
+</script>
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  .container {
+    position: absolute;
+    width: 1024px;
+    height: 768px;
+    border: 1px dotted red;
+  }
+
+  .header-pic-container {
+    position: absolute;
+    width: 1024px;
+    height: 150px;
+  }
+
+  .pic-container {
+    position: absolute;
+    top: 125px;
+    width: 1024px;
+    height: 300px;
+    background-color: blanchedalmond;
+  }
+
+  .content-container {
+    position: absolute;
+    top: 425px;
+    width: 1024px;
+    height: 600px;
+    background-color: gold;
+  }
+
+  .footer-container {
+    position: absolute;
+    top: 768px;
+    width: calc(1024px + 2px);
+    height: 100px;
+    background-color: blanchedalmond;
+  }
+
+  .centered {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .menu {
+    width: 80px;
+    height: 20px;
+    border: 1px solid red;
+    background-color: orange;
+    border-radius: 7px 7px 0 0;
+    text-align: center;
+  }
+
+  .menu-1 {
+    position: absolute;
+    top: 105px;
+    left: 15px;
+  }
+
+  .menu-2 {
+    position: absolute;
+    top: 105px;
+    left: 110px;
+  }
+
+  .menu-3 {
+    position: absolute;
+    top: 105px;
+    left: 205px;
+  }
+
+  .menu-4 {
+    position: absolute;
+    top: 105px;
+    left: 300px;
+  }
+
+  .menu-5 {
+    position: absolute;
+    top: 105px;
+    left: 395px;
+  }
+
+  .menu-6 {
+    position: absolute;
+    top: 105px;
+    left: 490px;
+  }
+
+  .menu-entered {
+    background-color: blue;
+    color: white;
+  }
+
+  .sub-menu {
+    border: 1px solid red;
+    background-color: aliceblue;
+    border-radius: 0 0 5px 5px;
+    opacity: 0.8;
+  }
+
+  .sub-menu-1 {
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    top: 125px;
+    left: 15px;
+  }
+
+  .sub-menu-2 {
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    top: 125px;
+    left: 110px;
+  }
+
+  .sub-menu-3 {
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    top: 125px;
+    left: 205px;
+  }
+
+  .sub-menu-4 {
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    top: 125px;
+    left: 300px;
+  }
+
+  .sub-menu-5 {
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    top: 125px;
+    left: 395px;
+  }
+
+  .sub-menu-6 {
+    width: 200px;
+    height: 250px;
+    position: absolute;
+    top: 125px;
+    left: 490px;
+  }
+
+  .display-none {
+    display: none;
+  }
+</style>
+
+<body>
+  <div class="container centered">
+    <div class="header-pic-container">
+      <img src="resource/1024x150.png" />
+      <span style="position:absolute;top:10px;left:10px;font-size:2em;color:white">This is header</span>
+    </div>
+    <div id="menu-1" class="menu menu-1" onmouseenter="mouse_enter('menu-1', 'sub-menu-1')"
+      onmouseleave="mouse_leave('menu-1', 'sub-menu-1')">選單 1</div>
+    <div id="menu-2" class="menu menu-2" onmouseenter="mouse_enter('menu-2', 'sub-menu-2')"
+      onmouseleave="mouse_leave('menu-2', 'sub-menu-2')">選單 2</div>
+    <div id="menu-3" class="menu menu-3" onmouseenter="mouse_enter('menu-3', 'sub-menu-3')"
+      onmouseleave="mouse_leave('menu-3', 'sub-menu-3')">選單 3</div>
+    <div id="menu-4" class="menu menu-4" onmouseenter="mouse_enter('menu-4', 'sub-menu-4')"
+      onmouseleave="mouse_leave('menu-4', 'sub-menu-4')">選單 4</div>
+    <div id="menu-5" class="menu menu-5" onmouseenter="mouse_enter('menu-5', 'sub-menu-5')"
+      onmouseleave="mouse_leave('menu-5', 'sub-menu-5')">選單 5</div>
+    <div id="menu-6" class="menu menu-6" onmouseenter="mouse_enter('menu-6', 'sub-menu-6')"
+      onmouseleave="mouse_leave('menu-6', 'sub-menu-6')">選單 6</div>
+    <div class="pic-container">
+      <img src="resource/1024x300.jpg" />
+      <span style="position:absolute;top:10px;left:10px;font-size:2em;">This is a picture in 'pic-container'</span>
+    </div>
+    <div class="content-container">
+      <img src="resource/1024x300.jpg" />
+      <span style="position:absolute;top:10px;left:10px;font-size:2em;">This is another picture in
+        'content-container'</span>
+    </div>
+    <div id="sub-menu-1" class="sub-menu sub-menu-1 display-none" onmouseenter="mouse_enter('menu-1', 'sub-menu-1')"
+      onmouseleave="mouse_leave('menu-1', 'sub-menu-1')">sub-menu-1</div>
+    <div id="sub-menu-2" class="sub-menu sub-menu-2 display-none" onmouseenter="mouse_enter('menu-2', 'sub-menu-2')"
+      onmouseleave="mouse_leave('menu-2', 'sub-menu-2')">sub-menu-2</div>
+    <div id="sub-menu-3" class="sub-menu sub-menu-3 display-none" onmouseenter="mouse_enter('menu-3', 'sub-menu-3')"
+      onmouseleave="mouse_leave('menu-3', 'sub-menu-3')">sub-menu-3</div>
+    <div id="sub-menu-4" class="sub-menu sub-menu-4 display-none" onmouseenter="mouse_enter('menu-4', 'sub-menu-4')"
+      onmouseleave="mouse_leave('menu-4', 'sub-menu-4')">sub-menu-4</div>
+    <div id="sub-menu-5" class="sub-menu sub-menu-5 display-none" onmouseenter="mouse_enter('menu-5', 'sub-menu-5')"
+      onmouseleave="mouse_leave('menu-5', 'sub-menu-5')">sub-menu-5</div>
+    <div id="sub-menu-6" class="sub-menu sub-menu-6 display-none" onmouseenter="mouse_enter('menu-6', 'sub-menu-6')"
+      onmouseleave="mouse_leave('menu-6', 'sub-menu-6')">sub-menu-6</div>
+  </div>
+  <div class="footer-container centered"><span style="position:absolute;top:10px;left:10px;font-size:2em;">This is
+      footer</span></div>
+</body>
+
+</html>

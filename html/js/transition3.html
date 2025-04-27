@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+  let idx = 0;
+  let playing = false;
+  function left() {
+    if (!playing && idx > 0) {
+      playing = true;
+      idx--
+      const s = document.querySelectorAll('.ele')
+      s.forEach((e) => {
+        e.style.left = 100 * idx + 'px'
+      })
+      s[s.length - 1].addEventListener('transitionend', end)
+    }
+  }
+
+  function right() {
+    if (!playing && idx < 5) {
+      playing = true;
+      idx++
+      const s = document.querySelectorAll('.ele')
+      s.forEach((e) => {
+        e.style.left = 100 * idx + 'px'
+      })
+      s[s.length - 1].addEventListener('transitionend', end)
+    }
+  }
+
+  function end() {
+    const s = document.querySelectorAll('.ele')
+    s[s.length - 1].removeEventListener('transitionend', end)
+    playing = false;
+  }
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .trans_left {
+    transition-property: left;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+  }
+
+  .ele {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 0px;
+    border-radius: 20px;
+  }
+</style>
+
+<body>
+  <input type="button" value="left" onclick="left()" />
+  <input type="button" value="right" onclick="right()" />
+  <div class="container">
+    <div class="ele trans_left" style="background-color: red; top:0px;"></div>
+    <div class="ele trans_left" style="background-color: orange; top:100px;"></div>
+    <div class="ele trans_left" style="background-color: yellowgreen; top:200px;"></div>
+  </div>
+
+</body>
+
+</html>

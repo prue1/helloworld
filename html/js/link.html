@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+  const lv1 = [["sweet", "甜的"], ["sour", "酸的"]]
+  const lv2 = []
+  lv2["sweet"] = [["sweet-round", "圓形果實"], ["sweet-ellipse", "橢圓形果實"], ["sweet-long", "長條形果實"]]
+  lv2["sour"] = [["sour-round", "圓形果實"], ["sour-ellipse", "橢圓形果實"], ["sour-long", "長條形果實"]]
+  const lv3 = []
+  lv3["sweet-round"] = [["lichi", "荔枝"], ["cherry", "櫻桃"], ["dragoneye", "龍眼"]]
+  lv3["sweet-ellipse"] = [["melon", "香瓜"], ["watermelon", "西瓜"]]
+  lv3["sweet-long"] = [["starfruit", "楊桃"], ["banana", "香蕉"]]
+  lv3["sour-round"] = [["lemon", "檸檬"], ["yellowmelon", "黃檸檬"], ["strawberry", "草莓"]]
+  lv3["sour-ellipse"] = [["sour-pineapple", "酸鳳梨"]]
+  lv3["sour-long"] = [["pineapple", "鳳梨"], ["big-pineapple", "大鳳梨"], ["small-pineapple", "小鳳梨"]]
+
+  const selects = ['sel1', 'sel2', 'sel3'];
+  const levels = [lv1, lv2, lv3];
+
+  function change(selid) {
+    const idx = selects.indexOf(selid);
+    if (idx + 1 < selects.length) {
+      const val = document.getElementById(selects[idx]).value;
+      setOptions(selects[idx + 1], levels[idx + 1][val])
+      change(selects[idx + 1]);
+    }
+  }
+
+  function setOptions(selid, optionArr) {
+    const sel = document.getElementById(selid);
+    removeOptions(sel)
+    fillOptions(sel, optionArr)
+  }
+
+  function removeOptions(sel) {
+    const options = sel.options;
+    while (options.length > 1) {
+      options.remove(1);
+    }
+  }
+
+  function fillOptions(sel, optionArr) {
+    const options = sel.options;
+    optionArr.forEach(element => {
+      let c = document.createElement("option");
+      c.value = element[0];
+      c.text = element[1];
+      options.add(c);
+    });
+  }
+
+</script>
+
+<style>
+  select {
+    width: 150px;
+    font-family: consolas;
+    font-size: 1em;
+  }
+
+  label,
+  select {
+    font-family: consolas, PMingLiU;
+  }
+</style>
+
+<body onload="setOptions('sel1', lv1);">
+  <div>
+    <label for="sel1">酸與甜</label>
+    <select id="sel1" onchange="change('sel1')">
+      <option value="-">---</option>
+    </select>
+  </div>
+  <div>
+    <label for="sel2">形狀</label>
+    <select id="sel2" onchange="change('sel2')">
+      <option value="-">---</option>
+    </select>
+  </div>
+  <div>
+    <label for="sel3">果實</label>
+    <select id="sel3" onchange="change('sel3')">
+      <option value="-">---</option>
+    </select>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+  let idx = 2;
+  let playing = false;
+  function setup() {
+    const s = document.querySelectorAll("#img_list>.img_div");
+    s[idx].classList.add("img0");
+    set_dots(idx);
+  }
+
+  function set_dots(idx) {
+    document.querySelector("#dot_div").innerHTML = "";
+    const s = document.querySelectorAll("#img_list>.img_div");
+    for (let i = 0; i < s.length; i++) {
+      if (i == idx) {
+        // 創建有命名空間的元件，必須用 createElementNS()
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute("r", "5");
+        circle.setAttribute("cx", "5");
+        circle.setAttribute("cy", "5");
+        circle.setAttribute("fill", "orange");
+        circle.setAttribute("stroke", "red");
+        svg.classList.add("svg0");
+        svg.appendChild(circle);
+        document.querySelector("#dot_div").appendChild(svg);
+      } else {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circle.setAttribute("r", "5");
+        circle.setAttribute("cx", "5");
+        circle.setAttribute("cy", "5");
+        circle.setAttribute("fill", "white");
+        circle.setAttribute("stroke", "red");
+        svg.classList.add("svg0");
+        svg.appendChild(circle);
+        document.querySelector("#dot_div").appendChild(svg);
+      }
+    }
+  }
+
+  let idx1;
+  let idx2;
+
+  function do_right() {
+    if (!playing) {
+      playing = true;
+      const s = document.querySelectorAll("#img_list>.img_div");
+      idx1 = idx;
+      idx2 = idx + 1;
+      idx2 %= s.length;
+
+      s[idx1].classList.add("img0_move_to_left");
+      s[idx2].classList.add("img1_move_fron_right", "img1_move_to_center");
+      s[idx2].addEventListener("animationend", do_right_move_end);
+      set_dots(idx2);
+    }
+  }
+
+  function do_right_move_end() {
+    const s = document.querySelectorAll("#img_list>.img_div");
+    s[idx1].classList.remove("img0");
+    s[idx1].classList.remove("img0_move_to_left");
+    s[idx2].classList.remove("img1_move_fron_right", "img1_move_to_center");
+    s[idx2].removeEventListener("animationend", do_right_move_end);
+    s[idx2].classList.add("img0");
+
+    idx = idx2;
+    playing = false;
+  }
+
+  function do_left() {
+    if (!playing) {
+      playing = true;
+      const s = document.querySelectorAll("#img_list>.img_div");
+      idx1 = idx;
+      idx2 = idx - 1;
+      idx2 = (idx2 + s.length) % s.length;
+
+      s[idx1].classList.add("img0_move_to_right");
+      s[idx2].classList.add("img1_move_fron_left", "img1_move_to_center");
+      s[idx2].addEventListener("animationend", do_left_move_end);
+      set_dots(idx2);
+    }
+  }
+
+  function do_left_move_end() {
+    const s = document.querySelectorAll("#img_list>.img_div");
+    s[idx1].classList.remove("img0");
+    s[idx1].classList.remove("img0_move_to_right");
+    s[idx2].classList.remove("img1_move_fron_left", "img1_move_to_center");
+    s[idx2].removeEventListener("animationend", do_left_move_end);
+    s[idx2].classList.add("img0");
+
+    idx = idx2;
+    playing = false;
+  }
+
+</script>
+<style>
+  body {
+    margin: 0;
+    --width: 720px;
+    --height: 480px;
+  }
+
+  .div1 {
+    position: absolute;
+    width: var(--width);
+    height: var(--height);
+    overflow: hidden;
+  }
+
+  .img_div {
+    position: absolute;
+    width: var(--width);
+    height: var(--height);
+    /* hide the image in default */
+    top: calc(var(--width) * -1);
+    left: calc(var(--height) * -1);
+  }
+
+  #dot_div {
+    position: absolute;
+    bottom: calc(var(--height) / 20);
+    display: flex;
+    justify-content: center;
+    width: var(--width);
+    height: 11px;
+  }
+
+  img {
+    width: var(--width);
+    height: var(--height);
+  }
+
+  .img0 {
+    top: 0px;
+    left: 0px;
+  }
+
+  .img1_move_fron_right {
+    top: 0px;
+    left: var(--width);
+  }
+
+  .img1_move_fron_left {
+    top: 0px;
+    left: calc(var(--width) * -1);
+  }
+
+  @keyframes to_left {
+    to {
+      left: calc(var(--width) * -1);
+    }
+  }
+
+  @keyframes to_right {
+    to {
+      left: var(--width);
+    }
+  }
+
+  @keyframes to_center {
+    to {
+      left: 0px;
+    }
+  }
+
+  .ani {
+    animation-duration: 0.15s;
+    animation-timing-function: linear;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    /* infinite */
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+  }
+
+  .img0_move_to_left {
+    animation-name: to_left;
+  }
+
+  .img0_move_to_right {
+    animation-name: to_right;
+  }
+
+  .img1_move_to_center {
+    animation-name: to_center;
+  }
+
+  .svg0 {
+    width: 11px;
+    height: 11px;
+    margin: 0 3px;
+  }
+
+  .div_left {
+    position: absolute;
+    left: 0px;
+    width: 70px;
+    height: var(--height);
+  }
+
+  .div_left:hover {
+    background-color: white;
+    opacity: 0.5;
+  }
+
+  .div_right {
+    position: absolute;
+    right: 0px;
+    width: 70px;
+    height: var(--height);
+  }
+
+  .div_right:hover {
+    background-color: white;
+    opacity: 0.5;
+  }
+</style>
+
+<body onload="setup()">
+  <div class="div1">
+    <div id="img_list">
+      <div class="img_div ani">
+        <a href="#" target="_blank">
+          <img src="resource\Springtim\01_gettyimages-904037282_resized.jpg" /></a>
+      </div>
+      <div class="img_div ani">
+        <a href="#" target="_blank">
+          <img src="resource\Springtim\02_gettyimages-467388730_resized.jpg" /></a>
+      </div>
+      <div class="img_div ani">
+        <a href="#" target="_blank">
+          <img src="resource\Springtim\03_gettyimages-165604758_resized.jpg" /></a>
+      </div>
+      <div class="img_div ani">
+        <a href="#" target="_blank">
+          <img src="resource\Springtim\04_gettyimages-671371116_resized.jpg" /></a>
+      </div>
+      <div class="img_div ani">
+        <a href="#" target="_blank">
+          <img src="resource\Springtim\05_gettyimages-103975999_resized.jpg" /></a>
+      </div>
+      <div class="img_div ani">
+        <a href="#" target="_blank">
+          <img src="resource\Springtim\06_gettyimages-110873707_resized.jpg" /></a>
+      </div>
+      <div class="img_div ani">
+        <a href="#" target="_blank">
+          <img src="resource\Springtim\07_gettyimages-165047100_resized.jpg" /></a>
+      </div>
+    </div>
+    <div id="dot_div"></div>
+    <div class="div_left" onclick="do_left()"></div>
+    <div class="div_right" onclick="do_right()"></div>
+  </div>
+</body>
+
+</html>

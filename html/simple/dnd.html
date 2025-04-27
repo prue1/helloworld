@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dnd</title>
+</head>
+
+<script src="dnd.js"></script>
+<script>
+  const a = []
+  a[0] = ['div1', 'absolute', '30px', '30px', '200px', '200px', '#33cc33']
+  a[1] = ['div2', 'absolute', '40px', '40px', '200px', '200px', '#0099ff']
+  a[2] = ['div3', 'absolute', '50px', '50px', '200px', '200px', '#ff9933']
+  a[3] = ['div4', 'absolute', '60px', '60px', '200px', '200px', 'violet']
+  a[4] = ['div5', 'absolute', '70px', '70px', '200px', '200px', 'brown']
+  a[5] = ['div6', 'absolute', '80px', '80px', '200px', '200px', 'cyan']
+
+</script>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: lightpink;
+  }
+
+  #base {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background-color: lightslategray;
+    overflow: auto;
+  }
+
+  #adjustment {
+    background-color: transparent;
+  }
+
+  .small_box {
+    background-color: transparent;
+    border: 2px solid blue;
+    width: 10px;
+    height: 10px;
+  }
+
+  .side {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .label_span {
+    user-select: none;
+    font-size: 0.5em;
+    pointer-events: none;
+  }
+
+  #properties {
+    user-select: none;
+    font-size: 1em;
+  }
+</style>
+
+<body onload="setup()" ondragstart="return false;" ondrop="return false;">
+  <div id="base" onmousemove="javascript: if(func)func(event)" onmouseleave="release()" onmouseup="release()"
+    onclick="do_cancel(event)">
+    <div
+      style="position: fixed; top:0px; right:0px; width:300px; height:100px; padding: 5px; background-color: yellow;">
+      <span id="properties" class="label_span"></span>
+    </div>
+    <div id="adjustment" style="display: none; position: absolute; top:0px; left:0px; width: 0px; height: 0px;"
+      onmousedown="move(event)">
+      <div id="tl" class="small_box" style="position: absolute; top: 0px; left: 0px;" onmousedown="set_data1(event)">
+      </div>
+      <div id="tr" class="small_box" style="position: absolute; top: 0px; right: 0px;" onmousedown="set_data2(event)">
+      </div>
+      <div id="bl" class="small_box" style="position: absolute; bottom: 0px; left: 0px; "
+        onmousedown="set_data3(event)">
+      </div>
+      <div id="br" class="small_box" style="position: absolute; bottom: 0px; right: 0px;"
+        onmousedown="set_data4(event)">
+      </div>
+      <div id="ts" class="side" style="position: absolute; top: 0px; left: 10px; width:0px; height:0px">
+        <div id="tss" class="small_box" onmousedown="set_data5(event)">
+        </div>
+      </div>
+      <div id="bs" class="side" style="position: absolute; bottom: 0px; left: 10px; width:0px; height:0px">
+        <div id="tss" class="small_box" onmousedown="set_data6(event)">
+        </div>
+      </div>
+      <div id="ls" class="side" style="position: absolute; top: 10px; left: 0px; width: 0px; height: 0px;">
+        <div id="lss" class="small_box" onmousedown="set_data7(event)">
+        </div>
+      </div>
+      <div id="rs" class="side" style="position: absolute; top: 10px; right: 0px; width: 0px; height: 0px;">
+        <div id="rss" class="small_box" onmousedown="set_data8(event)">
+        </div>
+      </div>
+
+</body>
+
+</html>

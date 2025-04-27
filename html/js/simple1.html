@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script src='../jquery-3.7.1.js'></script>
+<script>
+
+  function setup() {
+
+    let stick = true;
+    let inside = false;
+
+    const s1 = document.querySelector(".div1")
+    const s2 = document.querySelector(".div2")
+    const m1 = document.querySelector("#m1")
+    const places = document.querySelectorAll(".place")
+
+    m1.checked = stick
+    update()
+
+    s1.addEventListener("mouseenter", () => {
+      inside = true
+      update()
+    })
+
+    s1.addEventListener("mouseleave", () => {
+      inside = false
+      update()
+    })
+
+    m1.addEventListener("click", (e) => {
+      console.log(e.srcElement.id)
+      stick = !stick
+      update()
+    })
+
+    places.forEach((value) => {
+      value.addEventListener("click", (e1) => {
+        places.forEach((e2) => {
+          if (e2 != e1.srcElement) {
+            e2.checked = false;
+          }
+        })
+
+        if (e1.srcElement.checked) {
+          $.ajax('http://localhost:8383/hello?name=' + value.value).done((msg) => {
+            document.querySelector(".ajax-msg").innerHTML = msg.content
+          })
+        }
+        else {
+          document.querySelector(".ajax-msg").innerHTML = ''
+        }
+      })
+    })
+
+    function update() {
+      if (stick || inside) {
+        s2.style.display = 'block'
+        if (stick) {
+          s2.classList.add('div2-stick')
+        }
+        else {
+          s2.classList.remove('div2-stick')
+        }
+      }
+      else {
+        s2.style.display = 'none'
+        s2.classList.remove('div2-stick')
+      }
+    }
+
+    // 測試 ajax ，需在 server 做 cors 設定，以下連到 express
+    // cors 無法對檔案做個別設定，除非全開放(不做限制)
+    $.ajax('http://localhost:3000/users2/bbb').done((msg) => {
+      console.log(msg.id)
+      console.log(msg.content)
+    })
+  }
+
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .div1 {
+    border: 1px solid red;
+    padding: 3px;
+    position: absolute;
+    /* position 設定為 absolute，則寬度會自動限縮。relative 不會。 */
+    /* 可以用這個特性，來設定最適寬度 */
+  }
+
+  .div2 {
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    padding: 3px;
+
+    border: 1px solid red;
+    border-radius: 0 0 5px 5px;
+  }
+
+  .content {
+    color: orange;
+  }
+
+  .div2-stick {
+    background-color: gold;
+  }
+
+  .div2-stick>.content {
+    color: blueviolet;
+  }
+
+  .content:hover {
+    color: white;
+    background-color: blue;
+  }
+
+  span {
+    display: inline-block;
+    padding: 0px 3px 0px 3px;
+    width: 70px;
+  }
+
+  .div-ajax-msg {
+    position: absolute;
+    top: 200px;
+    left: 100px;
+  }
+
+  .ajax-msg {
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid red;
+  }
+</style>
+
+<body onload="setup()">
+  <div class="div1">
+    <div><span>亞洲</span><input type="checkbox" id="m1"></div>
+  </div>
+  <div class="div2">
+    <div class="content"><span>俄羅斯</span><input type="checkbox" class="place" value="俄羅斯"></div>
+    <div class="content"><span>中國</span><input type="checkbox" class="place" value="中國"></div>
+    <div class="content"><span>北韓</span><input type="checkbox" class="place" value="北韓"></div>
+    <div class="content"><span>日本</span><input type="checkbox" class="place" value="日本"></div>
+    <div class="content"><span>韓國</span><input type="checkbox" class="place" value="韓國"></div>
+    <div class="content"><span>台灣</span><input type="checkbox" class="place" value="台灣"></div>
+  </div>
+  <div class="div-ajax-msg">
+    <div id="ajaxMsg" class="ajax-msg"></div>
+  </div>
+</body>
+
+</html>

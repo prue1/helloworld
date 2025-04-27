@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+  let idx = 0;
+  function setup() {
+    const e = document.querySelectorAll(".container>.div1");
+    console.log(e.length);
+    e.forEach((v, i) => {
+      if (i == idx) {
+        v.classList.add("top0")
+      } else {
+        v.classList.add("top1")
+      }
+    })
+  }
+
+  let playing = false;
+  let idx1;
+  let idx2;
+  function move() {
+    if (!playing) {
+      playing = true;
+      let text = document.querySelector("#text1").value;
+      if (!text) {
+        playing = false;
+        return;
+      }
+
+      const e = document.querySelectorAll(".container>.div1");
+      idx1 = idx;
+      idx2 = idx + 1;
+      idx2 %= e.length;
+
+      e[idx1].classList.add("div1_trans")
+      e[idx1].style.top = '-50px'
+      e[idx2].classList.add("div1_trans")
+      e[idx2].style.top = '0px'
+      e[idx2].innerHTML = text
+      e[idx2].addEventListener("transitionend", end);
+    }
+  }
+
+  function end() {
+    const e = document.querySelectorAll(".container>.div1");
+    e[idx1].classList.remove("div1_trans")
+    e[idx1].classList.remove('top0')
+    e[idx1].classList.add('top1')
+    e[idx1].style.top = ''
+
+    e[idx2].classList.remove("div1_trans")
+    e[idx2].classList.remove('top1')
+    e[idx2].classList.add('top0')
+    e[idx2].style.top = ''
+    e[idx2].removeEventListener("transitionend", end);
+    idx = idx2;
+    playing = false;
+  }
+
+  function clear1() {
+    document.querySelector("#text1").value = ''
+  }
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .container {
+    position: relative;
+    overflow: hidden;
+    width: 350px;
+    height: 50px;
+  }
+
+  .div1 {
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    padding: 5px;
+    border: 3px solid gold;
+    color: chocolate;
+    word-wrap: break-word;
+  }
+
+  .top0 {
+    top: 0px;
+  }
+
+  .top1 {
+    top: 50px;
+  }
+
+  .div1_trans {
+    transition: top 0.2s linear;
+  }
+</style>
+
+<body onload="setup()">
+  <div class="container">
+    <div class="div1"></div>
+    <div class="div1"></div>
+  </div>
+  <div>
+    <input type="text" id="text1" size="30" />
+    <input type="button" value="submit" onclick="move()" />
+    <input type="button" value="clear" onclick="clear1()" />
+  </div>
+</body>
+
+</html>

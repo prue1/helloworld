@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>regular expression</title>
+</head>
+
+<script>
+  function parseTokens(str) {
+    const tokens = Object.create(null);
+    const tokensRE = /([^\s,;=]+)\s*(?:=\s*([^,;]+))?/g; //不容易理解
+    let match;
+
+    while ((match = tokensRE.exec(str))) {
+      tokens[match[1]] = match[2];
+    }
+
+    return tokens;
+  }
+
+  console.log(parseTokens(' aaaaa=3'))
+</script>
+<style>
+</style>
+
+<body>
+</body>
+
+</html>

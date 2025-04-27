@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+  
+  function add(container){
+    const elem = document.getElementById(container);
+    elem.appendChild(create1(create()));
+  }
+
+  let idx1 = 0;
+  function create1(child){
+    idx1++;
+    const div = document.createElement("div");
+    div.setAttribute("id", "div1-" + idx1);
+
+    const fieldset = document.createElement("fieldset");
+
+    const legend = document.createElement("legend");
+    const text2 = document.createTextNode("類別");
+    legend.appendChild(text2);
+
+    const btn_remove = document.createElement("input");
+    btn_remove.setAttribute("type", "button");
+    btn_remove.setAttribute("value", "X");
+    btn_remove.setAttribute("onclick", "remove('div1-" + idx1 + "')");
+    btn_remove.classList.add("remove");
+    legend.appendChild(btn_remove);
+
+    fieldset.appendChild(legend);
+    if(child){
+      fieldset.appendChild(child);
+    }
+
+    div.appendChild(fieldset);
+
+    return div;
+  }
+  
+  let idx = 0;
+  function create(){
+    idx++;
+    const div = document.createElement("div");
+    const input_text = document.createElement("input");
+    const input_checkbox = document.createElement("input");
+
+    const text1 = document.createTextNode("分類名稱：");
+    const text2 = document.createTextNode("是否顯示");
+
+    div.setAttribute("id", "div" + idx);
+    div.classList.add("div1"); // add class
+    
+    input_text.setAttribute("type", "text");
+    input_text.setAttribute("name", "cate" + idx);
+    input_text.classList.add("text");
+
+    input_checkbox.setAttribute("type", "checkbox");
+    input_checkbox.setAttribute("name", "values_cate" + idx);
+    input_checkbox.setAttribute("value", "Y");
+
+    div.appendChild(text1);
+    div.appendChild(input_text);
+    div.appendChild(input_checkbox);
+    div.appendChild(text2);
+
+    return div;
+  }
+
+  function remove(node_id){
+    document.getElementById(node_id).remove();
+  }
+</script>
+
+<style>
+  fieldset {
+    width:350px;
+    background-color: cornsilk;
+    border-radius: 5px;
+  }
+
+  .div1 {
+    margin: 5px 5px 5px 0px;
+  }
+
+  .text {
+    color:red; 
+    margin:0 5px 0 0;
+  }
+
+  .remove {
+    margin: 0 0 0 5px;
+  }
+</style>
+
+<body>
+  <form>
+    <input type="button" name="btn" value="add" onclick="add('container');" />
+    <div id="container"></div>
+  </form>
+</body>
+
+</html>

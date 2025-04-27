@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+  let playing = false;
+  let a = ['75px', '150px', '225px', '300px', '225px', '150px', '75px', '0px'];
+  let b = ['90deg', '180deg', '270deg', '360deg', '270deg', '180deg', '90deg', '0deg'];
+  let idx = -1;
+  function move() {
+    if (!playing) {
+      playing = true;
+      idx++;
+      idx %= a.length;
+
+      let e = document.querySelector(".div1");
+      e.innerHTML = '<span style="color:blue">moving...</span>';
+      e.classList.add("div1_trans");
+      e.style.left = a[idx];
+      e.style.transform = 'rotate(' + b[idx] + ')';
+      e.addEventListener("transitionend", end);
+    }
+  }
+
+  function end() {
+    let e = document.querySelector(".div1");
+    e.classList.remove("div1_trans");
+    e.removeEventListener("transitionend", end);
+    e.innerHTML = '<span style="color:red">stopped!</span>';
+    playing = false;
+  }
+</script>
+
+<style>
+  body {
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .div1 {
+    position: absolute;
+    left: 0;
+    /* 重要: 做 tranistion 時， 一定要設定相對的 property (即便該值為0)，否則不會有作用 */
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    background-color: yellowgreen;
+    border-radius: 10px;
+    border: 5px solid gold;
+    transform: rotate(0deg);
+    /* 重要: 做 tranistion 時， 一定要設定相對的 property (即便該值為0)，否則不會有作用 */
+  }
+
+  .div1_trans {
+    transition: left 0.5s linear, transform 0.5s linear;
+  }
+</style>
+
+<body>
+  <p>1.要設定初始值。</p>
+  <p>2.要設定transition。</p>
+  <p>3.要設定目標值。</p>
+  <div class="div1" onclick="move()"><span style="color:red">stopped!</span></div>
+</body>
+
+</html>

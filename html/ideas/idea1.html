@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<style>
+  * {
+    /* The box-sizing property allows us to include the padding and border in an element's total width and height. */
+    box-sizing: border-box;
+    font-family: "Liberation Serif";
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .main {
+    width: 150px;
+    background: aliceblue;
+    margin: 5px;
+    border: 1px solid red;
+    padding: 3px 5px;
+    transition: border-left 0.3s, border-right 0.3s;
+  }
+
+  .main:hover {
+    border-left: 10px solid red;
+    border-right: 10px solid red;
+  }
+
+  .more_msg {
+    position: absolute;
+    top: 5px;
+    left: 165px;
+    width: 500px;
+    border-radius: 0 0 10px 10px;
+    border: 3px solid orange;
+    padding: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .main:hover+.more_msg {
+    opacity: 1;
+  }
+</style>
+
+<body>
+  <div>
+    <div class="main">
+      <span>Apple</span>
+    </div>
+    <div class="more_msg">
+      <p>An apple is a round, edible fruit produced by an apple tree (Malus spp., among them the domestic or orchard
+        apple; Malus domestica). Apple trees are cultivated worldwide and are the most widely grown species in the
+        genus Malus. The tree originated in Central Asia, where its wild ancestor, Malus sieversii, is still found.
+        Apples have been grown for thousands of years in Eurasia and were introduced to North America by European
+        colonists. Apples have religious and mythological significance in many cultures, including Norse, Greek, and
+        European Christian tradition.
+      <p>
+    </div>
+
+    <div class="main">
+      <span>Pineapple</span>
+    </div>
+    <div class="more_msg">
+      <p>The pineapple (Ananas comosus) is a tropical plant with an edible fruit; it is the most economically
+        significant plant in the family Bromeliaceae.</p>
+      <p>The pineapple is indigenous to South America, where it has been cultivated for many centuries. The
+        introduction of the pineapple plant to Europe in the 17th century made it a significant cultural icon of
+        luxury. Since the 1820s, pineapple has been commercially grown in greenhouses and many tropical plantations.
+      </p>
+      <p>Pineapples grow as a small shrub; the individual flowers of the unpollinated plant fuse to form a multiple
+        fruit. The plant normally propagates from the offset produced at the top of the fruit or from a side
+        shoot, and typically matures within a year.</p>
+    </div>
+
+    <div class="main">
+      <span>Cherry</span>
+    </div>
+    <div class="more_msg">
+      <p>A cherry is the fruit of many plants of the genus Prunus, and is a fleshy drupe (stone fruit).</p>
+
+      <p>Commercial cherries are obtained from cultivars of several species, such as the sweet Prunus avium and the
+        sour Prunus cerasus. The name 'cherry' also refers to the cherry tree and its wood, and is sometimes applied
+        to almonds and visually similar flowering trees in the genus Prunus, as in "ornamental cherry" or "cherry
+        blossom." Wild cherry may refer to any of the cherry species growing outside cultivation, although Prunus
+        avium is often referred to specifically by the name "wild cherry" in the British Isles.</p>
+    </div>
+  </div>
+
+</body>
+
+</html>

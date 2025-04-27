@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>container</title>
+</head>
+
+<script>
+</script>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  #div-flex-container {
+    display: flex;
+    width: 500px;
+    height: 350px;
+    flex-direction: column;
+    background-color: palevioletred;
+    /* 將flex的內容, 依據flex方向(flex-direction) */
+    /* center : 集中到中央 */
+    /* space-evenly : 平均分配空白區域 */
+    justify-content: space-evenly;
+    /* 將flex的內容集中到flex另一個方向的中央 */
+    align-items: center;
+  }
+
+  #div1 {
+    width: 300px;
+    height: 150px;
+    background-color: yellowgreen;
+    border: 3px solid blue;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #inside1 {
+    background-color: violet;
+    border: 3px solid red;
+  }
+
+  #div2 {
+    width: 300px;
+    height: 150px;
+    background-color: yellowgreen;
+    border: 3px solid purple;
+
+    display: grid;
+    /* 將grid的內容集中到cell的中央 */
+    place-content: center;
+  }
+
+  #inside2 {
+    background-color: violet;
+    border: 3px solid red;
+  }
+</style>
+
+<body>
+  <div id="div-flex-container">
+    <div id="div1">
+      <span id="inside1">flex: <br> align-items <br> justify-content
+      </span>
+    </div>
+    <div id="div2">
+      <span id="inside2">grid: <br> place-content
+      </span>
+    </div>
+  </div>
+</body>
+
+</html>

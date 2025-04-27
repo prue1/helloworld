@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script src='../jquery-3.7.1.js'></script>
+<script>
+
+  let play = true
+  let c = ["c1", "c2"]
+  let idx = 0
+  function change() {
+    c.forEach((v) => {
+      $(".div1").removeClass(v)
+    })
+
+    idx++
+    idx = idx % c.length
+    $(".div1").addClass(c[idx])
+  }
+
+  function turn() {
+    play = !play
+    $("#btn_click").val(play ? "stop" : "play") /* jQuery 語法 val() */
+  }
+
+  setInterval(() => {
+    if (play) {
+      change()
+    }
+  }, 700);
+
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .div1 {
+    position: absolute;
+    height: 100px;
+  }
+
+  .div1.c1 {
+    box-shadow: 5px 5px 10px yellowgreen;
+    /* 水平 垂直 模糊程度(愈高愈模糊) 顏色 */
+  }
+
+  .div1.c2 {
+    box-shadow: 5px 5px 10px purple;
+    /* 水平 垂直 模糊程度(愈高愈模糊) 顏色 */
+  }
+
+  .div1.div2 {
+    margin: 5px;
+    font-size: 2em;
+    padding: 10px;
+    border-radius: 15px 5px 0px 5px;
+  }
+
+  .btn_click {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  .c1 {
+    background-color: yellowgreen;
+    color: purple;
+    border: 3px solid purple;
+  }
+
+  .c2 {
+    background-color: purple;
+    color: yellowgreen;
+    border: 3px solid yellowgreen;
+  }
+</style>
+
+<body>
+  <div class="div1 div2 c1">
+    <span>Hello World! 123</span><br>
+    <input type="button" id="btn_click" class="btn_click" value="stop" onclick="turn()" />
+  </div>
+</body>
+
+</html>
