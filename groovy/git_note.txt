@@ -1,0 +1,18 @@
+git init
+git add *.*
+git config --global user.email "ezway123@gmail.com"
+git config --global user.name "jelly"
+git commit -m 'init'
+
+PS F:\groovy> git status
+On branch master
+nothing to commit, working tree clean
+
+git log
+git log -2
+
+git branch <name>
+git checkout <branch-name>
+
+d5706185b1fa21d3538b5c25dd7e6ae734f70cd8
+d5706185b1fa21d3538b5c25dd7e6ae734f70cd8
