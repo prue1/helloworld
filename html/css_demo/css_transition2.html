@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script src='../jquery-3.7.1.js'></script>
+<script>
+  let playing = false;
+  function doClick() {
+    if (!playing) {
+      playing = true
+      set_transition('#div1')
+      get('#div1').style.left = '300px'
+    }
+  }
+
+  function doEnd() {
+    remove_transition('#div1')
+    get('#div1').style.left = '0px'
+    playing = false
+  }
+
+  function get(css_string) {
+    return document.querySelector(css_string)
+  }
+
+  const transition_setting = 'left 3s linear'
+
+  function set_transition(css_string) {
+    get(css_string).style.transition = transition_setting
+  }
+
+  function remove_transition(css_string) {
+    get(css_string).style.transition = ''
+  }
+</script>
+<style>
+  body {
+    margin: 0;
+  }
+
+  .div0 {
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+
+  .div1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+  }
+
+  .div1:hover {
+    background-color: yellowgreen;
+  }
+
+  .span1 {
+    opacity: 0;
+  }
+
+  .div1:hover>.span1 {
+    opacity: 1;
+  }
+</style>
+
+<body>
+  <div class="div0">
+    <div id="div1" class="div1" ontransitionend="doEnd()" onclick="doClick()">
+      <span class="span1">click me</span>
+    </div>
+  </div>
+
+</body>
+
+</html>

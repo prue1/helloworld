@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+</script>
+<style>
+  body {
+    margin: 0;
+  }
+
+  .div1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    transition: width 0.5s linear;
+  }
+
+  .div2 {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+    transition: width 0.5s linear;
+  }
+
+  .div3 {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    border-top-right-radius: 0px;
+    transition: width 0.5s linear, border-top-right-radius 0.5s linear;
+  }
+
+  .div0 .div1:hover {
+    width: 200px;
+  }
+
+  .div0 .div2:hover {
+    width: 300px;
+  }
+
+  .div0 .div3:hover {
+    width: 400px;
+    border-top-right-radius: 50px;
+  }
+</style>
+
+<body>
+  <div class="div0">
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+  </div>
+
+</body>
+
+</html>

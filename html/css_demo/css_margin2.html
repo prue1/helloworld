@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<style>
+  body {
+    margin: 0;
+    background-color: antiquewhite;
+    font-family: consolas;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  .div1 {
+    background-color: rgb(168, 9, 20);
+  }
+
+  .div1_1 {
+    width: 100px;
+    height: 100px;
+    padding: 50px;
+    background-color: blueviolet;
+  }
+
+  .div1_2 {
+    width: 150px;
+    height: 150px;
+    padding: 25px;
+    background-color: rgb(242, 193, 30);
+  }
+
+  .div2 {
+    width: 100px;
+    height: 100px;
+    margin: 50px;
+    background-color: orange;
+  }
+
+  .btn {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+  }
+
+  .btn2 {
+    width: 100;
+    height: 50px;
+    margin: 20px;
+    background-color: yellow;
+  }
+
+  input[type="button"]:hover {
+    color: white;
+    background-color: green;
+  }
+
+  .span_content {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin: 25px;
+    background-color: pink;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="div1">
+      <div class="div2">margin:50px;</div>
+    </div>
+    <div class="div1 div1_1">
+      <input type="button" value="padding: 50px" class="btn" />
+    </div>
+    <div class="div1 div1_2">
+      <span class="span_content">width:100px;<br>height:100px;<br>margin:25px;<br>外部padding:25px;</span>
+    </div>
+  </div>
+  <input type="button" value="Button" class="btn2" />
+
+</body>
+
+</html>

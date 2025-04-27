@@ -1,0 +1,208 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --width: 50px;
+  --height: 50px;
+  --border: 5px;
+  --img-width: calc(var(--width) - var(--border)*2);
+  --img-height: calc(var(--height) - var(--border)*2);
+}
+
+body {
+  margin: 0px;
+}
+
+.rel-c1 {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+.root_container {
+  display: flex;
+  flex-direction: column;
+  background-color: cornsilk;
+  position: absolute;
+  top: 7px;
+  left: 7px;
+}
+
+.container {
+  position: relative;
+  top: 0px;
+  left: 0px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
+  gap: 10px;
+
+  border: 5px outset darkorange;
+  border-top-left-radius: calc(var(--width)/2);
+  border-top-right-radius: calc(var(--width)/2);
+  border-bottom-left-radius: calc(var(--width)/2);
+  border-bottom-right-radius: calc(var(--width)/2);
+  background-image: linear-gradient(to bottom right, darkblue, yellow);
+  /* background-image: linear-gradient(45deg, gold, yellow, gold); */
+}
+
+.image-container {
+  width: calc(var(--width)*10);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+}
+
+.light-container {
+  width: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  overflow: hidden;
+}
+
+.light {
+  position: relative;
+  top: 0px;
+  left: 0px;
+
+  width: var(--width);
+  height: var(--height);
+  border-radius: calc(var(--width)/2);
+  background-color: aliceblue;
+  border: var(--border) solid orange;
+}
+
+.light:hover {
+  border-color: blue;
+}
+
+.light2 {
+  width: 5px;
+  height: 5px;
+  transition: border 0.3s;
+  border-radius: calc(var(--border)*2);
+  border: calc(var(--border)*2) solid transparent;
+}
+
+img {
+  width: var(--img-width);
+  height: var(--img-height);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.a2,
+.b2,
+.c2,
+.d2,
+.e2,
+.f2,
+.g2 {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: var(--img-width);
+  height: 0px;
+  background-color: yellowgreen;
+  border-radius: 5px;
+  transition: opacity 0.2s, height 0.5s linear;
+  opacity: 0;
+}
+
+.a1:hover .a2,
+.b1:hover .b2,
+.c1:hover .c2,
+.d1:hover .d2,
+.e1:hover .e2,
+.f1:hover .f2,
+.g1:hover .g2 {
+  height: 5px;
+  opacity: 1;
+}
+
+.s1 {
+  border: calc(var(--border)*2) solid red;
+  flex-grow: 0;
+}
+
+.s2 {
+  border: calc(var(--border)*2) solid green;
+  flex-grow: 0;
+}
+
+.s3 {
+  border: calc(var(--border)*2) solid blue;
+  flex-grow: 0;
+}
+
+label,
+input[type="text"] {
+  font-family: consolas;
+}
+
+.flex-container {
+  display: flex;
+  width: 200px;
+  height: 100px;
+  background-color: lightseagreen;
+  justify-content: center;
+  /* 水平位置，置中 */
+  align-items: center;
+  /* 垂直位置，置中 */
+  /* border: 10px solid darkorchid; */
+
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+.flex-container span {
+  font-size: 2em;
+  border: 3px solid gold;
+}
+
+.zoominmark {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  opacity: 0;
+
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.zoommask {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 200px;
+  height: 100px;
+}
+
+.zoomin {
+  transform: scale(5, 5);
+  transform-origin: top left;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#zoomview {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 150px;
+  left: 300px;
+  background-color: plum;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+}

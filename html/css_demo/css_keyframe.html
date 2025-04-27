@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+</script>
+<style>
+  body {
+    margin: 0;
+  }
+
+  .div1 {
+    width: 100px;
+    height: 100px;
+    background-color: lightskyblue;
+    color: red;
+    animation: mymove 5s linear infinite;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    clip-path: ellipse(50% 50%);
+    font-size: 1.5em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @keyframes mymove {
+    50% {
+      top: 0px;
+      left: 100px;
+      transform: rotate(180deg);
+    }
+
+    100% {
+      top: 0px;
+      left: 0px;
+      transform: rotate(0deg);
+    }
+  }
+</style>
+
+<body>
+  <div class="div1">
+    div1
+  </div>
+</body>
+
+</html>

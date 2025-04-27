@@ -1,0 +1,71 @@
+.s4 {
+  box-sizing: border-box;
+}
+
+div.s4 {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+}
+
+.s4.container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.s4.container1 {
+  background-color: purple;
+}
+
+.s4.container-ani {
+  transition: left 0.5s;
+}
+
+.s4.container2 {
+  background-color: cornflowerblue;
+}
+
+.s4.container3 {
+  background-color: blue;
+}
+
+.s4.container4 {
+  background-color: green;
+}
+
+.s4.container5 {
+  background-color: yellow;
+}
+
+.s4.container6 {
+  background-color: orange;
+}
+
+.s4.container7 {
+  background-color: red;
+}
+
+.s4.container1:hover>.s4.container2,
+.s4.container2:hover>.s4.container3,
+.s4.container3:hover>.s4.container4,
+.s4.container4:hover>.s4.container5,
+.s4.container5:hover>.s4.container6,
+.s4.container6:hover>.s4.container7 {
+  top: 0px;
+  left: 70px;
+}
+
+.s4.mask1,
+.s4.mask2,
+.s4.mask3,
+.s4.mask4,
+.s4.mask5,
+.s4.mask6,
+.s4.mask7,
+svg.s4 {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: transparent;
+}

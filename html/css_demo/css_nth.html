@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<style>
+  * {
+    font-family: consolas;
+    font-size: 1em;
+    /* 1em = 16px => https://www.w3schools.com/css/css_font_size.asp */
+  }
+
+  /* :  單冒號，指的是元件的狀態(state) */
+  /* :: 雙冒號，指的是元件中的某部份 */
+
+  h1:nth-last-child(2) { /* 子元件中，倒數第2個元件 */
+    color:red;
+  }
+
+  p:nth-last-of-type(2){ /* 子元件中，倒數第2個 p 元件 */
+    color:blue;
+  }
+
+  p::first-letter { /* 首字母 */
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+
+</style>
+
+<body>
+  <div>
+    <p>Hello World.</p>
+    <p>Hello World.</p>
+    <h1>Hello World.</h1>
+    <h1>Hello World.</h1>
+  </div>
+</body>
+
+</html>

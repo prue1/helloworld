@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<style>
+  * {
+    /* The box-sizing property allows us to include the padding and border in an element's total width and height. */
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0
+  }
+
+  div {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    background-color: cadetblue;
+  }
+
+  span {
+    background-color: aqua;
+    border-top: 1px;
+    border-bottom: 1px;
+    border-left: 5px;
+    border-right: 5px;
+    border-color: transparent;
+    border-style: solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  span:hover {
+    border-color: red;
+  }
+</style>
+
+<body>
+  <div><span>Hello World!</span></div>
+</body>
+
+</html>

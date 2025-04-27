@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<style>
+  body {
+    margin: 0;
+  }
+
+  a {
+    color: red;
+    font-size: 2em;
+  }
+
+  a:hover {
+    color: white;
+    background-color: blue;
+  }
+
+  span {
+    color: firebrick;
+    font-size: 1.5em;
+  }
+
+  span:hover {
+    background-color: aqua;
+  }
+
+  #id1,
+  #id2,
+  #id3,
+  #id4 {
+    color: cornflowerblue;
+  }
+
+  .class1 {
+    color: gold;
+  }
+
+  .class1.class2 {
+    color: darkseagreen;
+  }
+
+  .class1 .class2 {
+    color: deeppink;
+  }
+
+  /* 注意:上方2個設定的優先級相同，若同時符合條件，將會套用最後的設定 */
+
+  /* inline > id > class > element > * > external file
+     inline:1000, id:100, class:10, element:1
+     根據計算的總值套用結果 */
+</style>
+
+<body>
+  <a href="https://www.w3schools.com/css/css_specificity.asp" target="_blank">CSS Specificity</a><br>
+  <span>Hello World. 1</span><br>
+  <span class="class1">Hello World. 2</span><br>
+  <span id="id1" class="class1">Hello World. 3</span><br>
+  <span id="id2" class="class1" style="color:blueviolet">Hello World. 4</span><br>
+  =============================================================<br>
+  <span class="class1 class2">Hello World. 5</span><br>
+  <div class="class1">
+    <span class="class2">Hello World. 6</span>
+  </div>
+  <div class="class1">
+    <span class="class1 class2">Hello World. 7</span>
+  </div><br>
+
+</body>
+
+</html>

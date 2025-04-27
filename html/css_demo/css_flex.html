@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<style>
+  * {
+    /* The box-sizing property allows us to include the padding and border in an element's total width and height. */
+    box-sizing: border-box;
+  }
+
+  p {
+    font-size: 1.5em;
+  }
+
+  /*
+    flex-direction : [row|column|row-reverse|column-reverse]
+    flex-wrap : [nowrap|wrap|wrap-reverse]
+    flex-flow : The flex-flow property is a "shorthand" property for setting both the flex-direction and flex-wrap properties.
+
+    The justify-content property is used to align the flex items when they do not use all available space on the main-axis (horizontally).
+    justify-content : [center|flex-start|flex-end|space-around|space-between|space-evenly]
+
+    The align-items property is used to align the flex items when they do not use all available space on the cross-axis (vertically).
+    align-items : [center|flex-start|flex-end|stretch|baseline|normal]
+
+    The align-content property is used to align the flex lines.
+    The align-content property is similar to align-items, but instead of aligning flex items, it aligns the flex lines.
+    align-content : [center|stretch|flex-start|flex-end|space-around|space-between|space-evenly]
+  **/
+
+  .flex-container-1 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 200px;
+    height: 200px;
+    background-color: yellowgreen;
+  }
+
+  .flex-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 50px;
+    height: 50px;
+
+    font-family: consolas;
+    font-size: 2em;
+    background-color: lightskyblue;
+    border-radius: 5px;
+    border: 3px solid red;
+  }
+
+  .flex-content:hover {
+    background-color: rgb(48, 205, 9);
+  }
+</style>
+
+<body>
+  <p>Flex Container</p>
+  <div class="flex-container-1">
+    <div class="flex-content">1</div>
+    <div class="flex-content">2</div>
+    <div class="flex-content">3</div>
+  </div>
+</body>
+
+</html>

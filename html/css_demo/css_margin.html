@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS flipper</title>
+</head>
+
+<style>
+    div {
+        margin: 30px;
+        width: 300px;
+        height: 150px;
+        font-family: consolas;
+        border-width: 3px;
+        border-style: dotted dashed solid double;
+        border-color: red;
+        border-radius: 15px 50px 30px 5px;
+        padding: 10px;
+        word-wrap: break-word;
+    }
+
+    div div {
+        margin: 10px;
+        border-width: 5px 10px 15px 20px;
+        border-color: purple;
+        width: 500px;
+    }
+
+    div div div {
+        margin: 0 0 0 100px;
+        border-color: green;
+    }
+</style>
+
+<body>
+    <div>
+        div-1<br>
+        Margins: 相對於外部的 container<br>
+        Margins are used to create space around elements, <b style="color:red">outside</b> of any defined borders.
+        <div>
+            div-2<br>
+            Margin Collapse<br>
+            Top and bottom margins of elements are sometimes collapsed into a single margin that <b style="color:red">
+                is equal to the largest of the two margins.</b>
+            This does not happen on left and right margins! Only top and bottom margins!
+            <div>
+                div-3<br>
+                <a href="https://www.w3schools.com/css/css_margin.asp" target="_blank">CSS Margins</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

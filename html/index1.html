@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="index1.css">
+  <script src="index1.js"></script>
+  <title>CSS flipper</title>
+</head>
+
+<body onload="setup()">
+  <div class="root_container">
+    <div>
+      <div class="container">
+        <div class="image-container">
+          <div class="light a1" onmouseenter="startRotate(this)" onmouseleave="stopRotate(this)">
+            <img src="./img/leaf.png" alt="Leaf">
+            <div class="a2"></div>
+          </div>
+          <div class="light b1" onmouseenter="startRotate(this)" onmouseleave="stopRotate(this)">
+            <img src="./img/leaf.png" alt="Leaf">
+            <div class="b2"></div>
+          </div>
+          <div class="light c1" onmouseenter="startRotate(this)" onmouseleave="stopRotate(this)">
+            <img src="./img/leaf.png" alt="Leaf">
+            <div class="c2"></div>
+          </div>
+          <div class="light d1" onmouseenter="startRotate(this)" onmouseleave="stopRotate(this)">
+            <img src="./img/leaf.png" alt="Leaf">
+            <div class="d2"></div>
+          </div>
+          <div class="light e1" onmouseenter="startRotate(this)" onmouseleave="stopRotate(this)">
+            <img src="./img/leaf.png" alt="Leaf">
+            <div class="e2"></div>
+          </div>
+          <div class="light f1" onmouseenter="startRotate(this)" onmouseleave="stopRotate(this)">
+            <img src="./img/leaf.png" alt="Leaf">
+            <div class="f2"></div>
+          </div>
+          <div class="light g1" onmouseenter="startRotate(this)" onmouseleave="stopRotate(this)">
+            <img src="./img/leaf.png" alt="Leaf">
+            <div class="g2"></div>
+          </div>
+        </div>
+        <div class="light-container">
+          <div class="light2"></div>
+          <div class="light2"></div>
+          <div class="light2"></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div style="display: grid; grid-template-columns: 70px 100px auto;">
+        <label for="offset">offset:</label>
+        <input type="text" id="offset" readonly /><span></span>
+        <label for="screen">screen:</label>
+        <input type="text" id="screen" readonly /><span></span>
+        <label for="client">client:</label>
+        <input type="text" id="client" readonly /><span>(viewport)</span>
+        <label for="page">page:</label>
+        <input type="text" id="page" readonly /><span></span>
+      </div>
+    </div>
+    <div>
+      <div class="flex-container">
+        <span>hello flex!</span>
+        <div class="zoominmark">
+        </div>
+        <div class="zoommask" onmousemove="mousemove(event)" onmouseenter="mouseenter()" onmouseleave="mouseleave()">
+        </div>
+      </div>
+      <div id="zoomview">
+        <div class="flex-container zoomin">
+          <span>hello flex!</span>
+        </div>
+      </div>
+    </div>
+    <div style="width:100px; height:100px; background-color: palevioletred;">
+    </div>
+  </div>
+</body>
+
+</html>

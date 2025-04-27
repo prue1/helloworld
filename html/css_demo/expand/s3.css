@@ -1,0 +1,67 @@
+.s3 {
+  box-sizing: border-box;
+}
+
+.s3.container {
+  position: relative;
+  background-color: yellowgreen;
+  width: 70px;
+  height: 70px;
+}
+
+.s3.div1 {
+  position: absolute;
+  left: 35px;
+  top: 0px;
+  width: 35px;
+  height: 35px;
+  background-color: darkviolet;
+  transition: width 0.3s linear, height 0.3s linear, left 0.3s linear, top 0.3s linear;
+}
+
+.s3.div1-move {
+  width: 70px;
+  height: 70px;
+  left: 70px;
+}
+
+.s3.div2 {
+  position: absolute;
+  left: 35px;
+  top: 35px;
+  width: 35px;
+  height: 35px;
+  background-color: darkgoldenrod;
+  transition: width 0.3s linear, height 0.3s linear, left 0.3s linear, top 0.3s linear;
+}
+
+.s3.div2-move {
+  width: 70px;
+  height: 70px;
+  left: 70px;
+  top: 70px
+}
+
+.s3.div3 {
+  position: absolute;
+  left: 0px;
+  top: 35px;
+  width: 35px;
+  height: 35px;
+  background-color: darkcyan;
+  transition: width 0.3s linear, height 0.3s linear, left 0.3s linear, top 0.3s linear;
+}
+
+.s3.div3-move {
+  width: 70px;
+  height: 70px;
+  top: 70px
+}
+
+.s3.div-top {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 70px;
+  height: 70px
+}

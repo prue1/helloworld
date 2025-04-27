@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+  function jump_to() {
+    const e = document.getElementById("color");
+    const dest = document.getElementById("dest");
+    document.getElementById(dest.value).appendChild(e);
+  }
+</script>
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .div-block {
+    width: 200px;
+    height: 100px;
+  }
+
+  .div1 {
+    background-color: darkcyan;
+  }
+
+  .div2 {
+    background-color: gold;
+  }
+
+  .div3 {
+    background-color: cornflowerblue;
+  }
+
+  #color {
+    margin: 10px;
+  }
+</style>
+
+<body>
+  <!-- 將select的value與div的id綁在一起，可大幅簡化 change() 的程式碼 -->
+  <div class="container">
+    <div id="darkcyan" class="div-block div1">
+      <div id="color">
+        <label for="dest">jump to:</label>
+        <select id="dest" name="dest" onchange="jump_to();">
+          <option value="darkcyan">darkcyan</option>
+          <option value="gold">gold</option>
+          <option value="cornflowerblue">cornflowerblue</option>
+        </select>
+      </div>
+    </div>
+    <div id="gold" class="div-block div2"></div>
+    <div id="cornflowerblue" class="div-block div3"></div>
+  </div>
+</body>
+
+</html>

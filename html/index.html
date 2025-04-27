@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dropdown</title>
+</head>
+
+<script src='jquery-3.7.1.js'></script>
+<script>
+$( document ).ready(function() {
+    $("p").click(function() {
+        console.log( "You clicked a paragraph!" );
+    });
+
+    //$(":button.bbb").click(function(){
+        //$("p").hide();
+    //});
+
+    $("input[type='button'].bbb").click(function(){
+        $("p").hide();
+        $("tr.tr1").hide();
+    });
+
+    $("input[type='button'].ccc").click(function(){
+        $("p").show();
+        $("tr.tr1").show();
+    });
+
+    console.log($("select#select1").val());
+    console.log($("select#select1").find("option").length);
+    
+    $("select#select1").find("option").each(function(index, value){
+        console.log(value.value + ", " + value.text);
+    });
+    
+    console.log($("select#select1").find("option")[3].value);
+    console.log($("select#select1").find("option").get(0).text);
+
+    $("select#select1").change(function(){
+        console.log('change to:' + $(this).val());
+    });
+});
+</script>
+<body>
+<p>Hello World!</p>
+<input type='button' value='hide' class='bbb' />
+<input type='button' value='show' class='ccc' />
+<select id='select1'>
+    <option value='1'>aaa</option>
+    <option value='2'>bbb</option>
+    <option value='3' selected>ccc</option>
+    <option value='4'>ddd</option>
+    <option value='5'>eee</option>
+</select><br><br>
+<table border='1' width='300'>
+    <tr class='tr1' align='center'>
+        <th>values</th>
+    </tr>
+    
+    <tr align='center'>
+        <td>aaa</td>
+    </tr>
+    
+    <tr align='center'>
+        <td>bbb</td>
+    </tr>
+</table>
+</body>
+</html>

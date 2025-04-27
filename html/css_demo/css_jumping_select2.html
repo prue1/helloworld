@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+  function jump_to() {
+    const e = document.getElementById("layer");
+    const dest = document.getElementById("layer-idx");
+    document.getElementById("id" + dest.value).appendChild(e);
+  }
+</script>
+
+<style>
+  body {
+    --width: 10px;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .container {
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    background-color: darkcyan;
+    position: relative;
+  }
+
+  .inner-container {
+    box-sizing: border-box;
+    width: 100px;
+    height: 20px;
+    border-width: 0 0 var(--width) var(--width);
+    border-style: solid;
+    border-color: red;
+    position: absolute;
+    bottom: 0px;
+  }
+
+  .start-inner-container {
+    border-width: 0 var(--width) var(--width) var(--width);
+  }
+
+  .end-inner-container {
+    border-width: 0 var(--width) var(--width);
+  }
+
+  .sub-item {
+    position: absolute;
+    top: var(--width);
+    left: var(--width);
+  }
+
+  .container:nth-child(2n) {
+    background-color: orange;
+  }
+</style>
+
+<body>
+  <div class="flex-container">
+    <div id="id0" class="start-inner-container container">
+      <div id="layer" class="sub-item">
+        <label for="dest">to:</label>
+        <select id="layer-idx" onchange="jump_to();">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+        </select>
+      </div>
+      <div class="inner-container">
+      </div>
+    </div>
+    <div id="id1" class="container">
+      <div class="inner-container">
+      </div>
+    </div>
+    <div id="id2" class="container">
+      <div class="inner-container">
+      </div>
+    </div>
+    <div id="id3" class="container">
+      <div class="inner-container">
+      </div>
+    </div>
+    <div id="id4" class="container">
+      <div class="inner-container">
+      </div>
+    </div>
+    <div id="id5" class="container">
+      <div class="inner-container">
+      </div>
+    </div>
+    <div id="id6" class="container">
+      <div class="inner-container">
+      </div>
+    </div>
+    <div id="id7" class="container">
+      <div class="inner-container">
+      </div>
+    </div>
+    <div id="id8" class="container">
+      <div class="inner-container">
+      </div>
+    </div>
+    <div id="id9" class="container">
+      <div class="inner-container end-inner-container">
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

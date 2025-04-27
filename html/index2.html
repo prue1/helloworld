@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dropdown</title>
+</head>
+
+<script>
+  function cb_click(ele, eid) {
+    if (!ele.checked) {
+      change(eid, 'white')
+    }
+    else {
+      change(eid, 'yellow')
+    }
+  }
+
+  function change(eid, clr) {
+    document.querySelector("#" + eid).style.fill = clr
+  }
+
+  function cb_click2(ele, eid) {
+    if (!ele.checked) {
+      change2(eid, './img/b1.png')
+    }
+    else {
+      change2(eid, './img/b2.png')
+    }
+  }
+
+  function change2(eid, png) {
+    document.querySelector("#" + eid).src = png
+  }
+
+  const change_event = new Event("change")
+  function selectAll() {
+    const eles = document.querySelectorAll("input[type=checkbox]")
+    eles.forEach((ele) => {
+      if (!ele.checked) {
+        ele.checked = true
+        ele.dispatchEvent(change_event)
+      }
+    })
+  }
+
+  function unselectAll() {
+    const eles = document.querySelectorAll("input[type=checkbox]")
+    eles.forEach((ele) => {
+      if (ele.checked) {
+        ele.checked = false
+        ele.dispatchEvent(change_event)
+      }
+    })
+  }
+
+  function toggleAll() {
+    const eles = document.querySelectorAll("input[type=checkbox]")
+    eles.forEach((ele) => {
+      ele.checked = !ele.checked
+      ele.dispatchEvent(change_event)
+    })
+  }
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 7px;
+  }
+
+  .main-container {
+    /* flex-container */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  /* single element CSS */
+  .flex2 {
+    display: flex;
+  }
+
+  .round-border {
+    border-radius: 15px;
+  }
+
+  .center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cb {
+    width: 80px;
+    height: 50px;
+    border: 1px solid gold;
+  }
+
+  .part1 {
+    width: 30px;
+    height: 50px;
+  }
+
+  .part2 {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* single element CSS - end */
+
+  .cb1 {
+    background-color: orange;
+  }
+
+  .cb2 {
+    background-color: yellowgreen;
+  }
+
+  .cb3 {
+    background-color: lightsteelblue;
+  }
+
+  .cb4 {
+    background-color: darkmagenta;
+  }
+
+  .empty {
+    background-color: lightyellow;
+  }
+
+  @media screen and (max-width: 700px) {
+    .main-container {
+      /* grid-container */
+      display: grid;
+      grid-template-columns: 80px 80px 80px 80px;
+    }
+
+    .empty {
+      background-color: lightskyblue;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .empty {
+      background-color: orange;
+    }
+  }
+
+  @media screen and (max-height: 300px) {
+    .empty {
+      border: 1px dashed red;
+    }
+  }
+</style>
+
+<body>
+  <div>
+    <input type="button" value="select all" onclick="selectAll()" />
+    <input type="button" value="unselect all" onclick="unselectAll()" />
+    <input type="button" value="toggle all" onclick="toggleAll()" />
+  </div>
+  <div class="main-container">
+    <div class="flex2 round-border cb cb1">
+      <div class="center-flex part1">
+        <input type="checkbox" checked onchange="cb_click(this, 'circle1')" />
+      </div>
+      <div class="center-flex part2">
+        <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+          <circle id="circle1" cx="25" cy="25" r="20" stroke="green" stroke-width="3" fill="yellow" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb cb2">
+      <div class="center-flex part1">
+        <input type="checkbox" checked onchange="cb_click(this, 'circle2')" />
+      </div>
+      <div class="center-flex part2">
+        <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+          <circle id="circle2" cx="25" cy="25" r="20" stroke="green" stroke-width="3" fill="yellow" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb cb3">
+      <div class="center-flex part1">
+        <input type="checkbox" checked onchange="cb_click(this, 'circle3')" />
+      </div>
+      <div class="center-flex part2">
+        <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+          <circle id="circle3" cx="25" cy="25" r="20" stroke="green" stroke-width="3" fill="yellow" />
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb cb4">
+      <div class="center-flex part1">
+        <input type="checkbox" checked onchange="cb_click2(this, 'pic')" />
+      </div>
+      <div class="center-flex part2">
+        <img id="pic" src="./img/b2.png">
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+
+    <div class="flex2 round-border cb empty">
+      <div class="center-flex part1">
+        <span>tem</span>
+      </div>
+      <div class="center-flex part2">
+        <span>plate</span>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

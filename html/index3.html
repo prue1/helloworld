@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dropdown</title>
+</head>
+
+<script>
+  const a = new Map()
+  a.set('val1', '值1')
+  a.set('val2', '值2')
+  a.set('val3', '值3')
+
+  const b = []
+  b['val1'] = 'b值1'
+  b['val2'] = 'b值2'
+  b['val3'] = 'b值3'
+
+  function setup() {
+    const e = document.querySelector("#selection")
+  }
+
+  function change() {
+    const value = document.querySelector("#selection").value
+    document.querySelector("#val").innerHTML = a.get(value) + ', ' + b[value]
+  }
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: 'Liberation Sans';
+  }
+
+  body {
+    margin: 10px;
+  }
+</style>
+
+<body onload="setup()">
+  <div>msg:<span id="val"></span></div>
+  <select id="selection" onchange="change()">
+    <option value="val1">Value1</option>
+    <option value="val2">Value2</option>
+    <option value="val3">Value3</option>
+  </select>
+</body>
+
+</html>

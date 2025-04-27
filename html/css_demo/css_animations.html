@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<style>
+  body {
+    margin: 20px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --pixel: 144px;
+  }
+
+  .div1 {
+    width: 150px;
+    height: 70px;
+    color: darkblue;
+    background-color: plum;
+    font-size: 1.5em;
+    font-family: consolas;
+    align-content: center;
+    text-align: center;
+    border: 5px solid gold;
+  }
+
+  @keyframes ani-translate {
+    from {
+      transform: translateX(0px);
+    }
+
+    to {
+      transform: translateX(50px);
+    }
+  }
+
+  @keyframes ani-rotate {
+    from {
+      transform: rotate(5deg);
+    }
+
+    to {
+      transform: rotate(-5deg);
+    }
+  }
+
+  .translate-item {
+    /*
+    animation-name: ani-translate;
+    animation-duration: 6s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    */
+    /* animation-fill-mode:forwards; */
+    animation: ani-translate 6s ease-in-out 0s infinite alternate;
+  }
+
+  .rotate-item {
+    animation-name: ani-rotate;
+    animation-duration: 3s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    /* animation-fill-mode:forwards; */
+  }
+
+  .origin1 {
+    /* 參考點 */
+    transform-origin: 30% 10%;
+  }
+
+  .origin2 {
+    /* 參考點 */
+    transform-origin: 50% 100%;
+  }
+
+  .image {
+    width: var(--pixel);
+    height: var(--pixel);
+    background: url('resource/IconSet_144.png') calc(-4 * var(--pixel)) calc(-13 * var(--pixel));
+    /* background 並不是從圖中擷取一塊 */
+    /* 而是，想像一下，將整張圖做位移，並且將想要的圖案對準顥示區塊 */
+  }
+</style>
+
+<body>
+  <div style="width:80%;">
+    <div class="translate-item">
+      <div class="div1 rotate-item origin1">HP Potion</div>
+    </div>
+    <div>
+      <img src="resource/img_trans.gif" class="image rotate-item origin2" />
+    </div>
+  </div>
+</body>
+
+</html>

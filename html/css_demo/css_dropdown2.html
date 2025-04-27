@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS flipper</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        /* 傳言；瀏覽器預設 margin:10px; 加這個設定可讓頁面貼齊邊緣。 */
+    }
+
+    .div_container {
+        position: relative;
+    }
+
+    .menu {
+        width: 100px;
+        height: 30px;
+        background-color: yellowgreen;
+        color: white;
+        position: absolute;
+    }
+
+    .dropdown {
+        position: absolute;
+        /* background-color:rgb(210, 245, 139); */
+        top: 30px;
+        width: 300px;
+        height: 250px;
+    }
+
+    .inner_dropdown {
+        position: absolute;
+        background-color: rgba(102, 51, 153, 0.247);
+        color: rgb(3, 0, 0);
+        top: 10px;
+        left: 0;
+        width: 300px;
+        height: 240px;
+        border-radius: 5px;
+    }
+
+    .m1 {
+        top: 0;
+        left: 0;
+    }
+
+    .d1 {
+        left: 0;
+        display: none;
+    }
+
+    .m1:hover+.d1,
+    .d1:hover {
+        display: inline-block;
+    }
+
+    .m2 {
+        top: 0;
+        left: 100px;
+    }
+
+    .d2 {
+        left: 0;
+        display: none;
+    }
+
+    .m2:hover+.d2,
+    .d2:hover {
+        display: inline-block;
+    }
+
+    .m3 {
+        top: 0;
+        left: 200px;
+    }
+
+    .d3 {
+        left: 0;
+        display: none;
+    }
+
+    .m3:hover+.d3,
+    .d3:hover {
+        display: inline-block;
+    }
+
+    li {
+        font-family: consolas;
+        font-size: 16px;
+    }
+
+    a:visited,
+    a:link {
+        color: blue
+    }
+
+    a:hover {
+        color: red;
+    }
+
+    .div_bottom_line {
+        width: 100px;
+        height: 5px;
+        position: absolute;
+        background-color: red;
+    }
+
+    .line1 {
+        top: 0;
+        left: 0;
+    }
+
+    .line2 {
+        top: 0;
+        left: 100px;
+    }
+
+    .line3 {
+        top: 0;
+        left: 200px;
+    }
+</style>
+
+<body>
+    <div class="div_container">
+        <div class="menu m1">功能一</div>
+        <div class="dropdown d1">
+            <div class="div_bottom_line line1"></div>
+            <div class="inner_dropdown">
+                <ul>
+                    <li><a href="https://www.w3schools.com/css/default.asp" target="_blank">CSS Tutorial</a></li><br>
+                    <li><a href="https://www.w3schools.com/css/css3_animations.asp" target="_blank">CSS Animations</a>
+                    </li><br>
+                    <li><a href="https://www.w3schools.com/css/css_specificity.asp" target="_blank">CSS Specificity</a>
+                    </li><br>
+                </ul>
+            </div>
+        </div>
+        <div class="menu m2">功能二</div>
+        <div class="dropdown d2">
+            <div class="div_bottom_line line2"></div>
+            <div class="inner_dropdown">
+                <ul>
+                    <li><a href="https://www.w3schools.com/cssref/pr_class_display.php" target="_blank">CSS display
+                            Property</a></li><br>
+                    <li><a href="https://www.w3schools.com/css/css_boxmodel.asp" target="_blank">CSS Box Model</a></li>
+                    <br>
+                    <li><a href="https://www.lonelyplanet.com/articles/top-things-to-do-in-japan" target="_blank">24 of
+                            the best experiences in Japan</a></li><br>
+                </ul>
+            </div>
+        </div>
+        <div class="menu m3">功能三</div>
+        <div class="dropdown d3">
+            <div class="div_bottom_line line3"></div>
+            <div class="inner_dropdown">
+                <ul>
+                    <li><a href="https://forum.gamer.com.tw/B.php?bsn=17532" target="_blank">英雄聯盟 League of Legends 哈啦板
+                            - 巴哈姆特</a></li><br>
+                    <li><a href="https://spring.io/" target="_blank">Spring</a></li><br>
+                    <li><a href="https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+                            target="_blank">Introduction to Node.js</a></li><br>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

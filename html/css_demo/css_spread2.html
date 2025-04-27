@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: 'Microsoft JhengHei';
+    font-size: 1em;
+  }
+
+  .div-item {
+    width: 100px;
+    height: 100px;
+  }
+
+  .container {
+    position: absolute;
+    background-color: yellow;
+  }
+
+  .div1 {
+    position: absolute;
+    top: 50px;
+    left: 200px;
+    background-color: orange;
+  }
+
+  .div2 {
+    position: absolute;
+    top: 150px;
+    left: 50px;
+    background-color: blue;
+  }
+
+  .container:hover .div1:hover+.div2 {
+    border: 3px solid orange;
+  }
+</style>
+
+<body>
+  <div class="div-item container">
+    <div class="div-item div1"><span>div1</span></div>
+    <div class="div-item div2"><span>div2</span></div>
+  </div>
+
+</body>
+
+</html>

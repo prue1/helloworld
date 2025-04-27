@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  :root {
+    --pixel: 96px;
+  }
+
+  .container {
+    width: calc(var(--pixel) + 20px);
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    background-color: wheat;
+  }
+
+  .sobject {
+    font-family: 'Arial Black';
+    font-weight: bold;
+    font-size: 1.5em;
+  }
+
+  .picture {
+    border: 1px solid black;
+    width: var(--pixel);
+    height: var(--pixel);
+    margin: 0 10px 0 10px;
+    background: url('resource/faces/Actor1.png') calc(-0 * var(--pixel)) calc(-0 * var(--pixel));
+  }
+
+  .note_container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 5px;
+    font-family: consolas;
+    font-size: 0.8em;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="sobject"><span>Wanted</span></div>
+    <div>
+      <img src="resource/img_trans.gif" class="picture" alt="picture" />
+    </div>
+    <div class="note_container">
+      <span>Dead Or Alive</span>
+      <span id="bounty">$1,000,000,000</span>
+    </div>
+  </div>
+</body>
+
+</html>

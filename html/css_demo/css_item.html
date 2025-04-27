@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  .div1 {
+    position: relative;
+  }
+
+  .div2 {
+    position: absolute;
+    width: 100px;
+    height: 120px;
+    background-color: white;
+    border: 3px solid orange;
+  }
+
+  .div3 {
+    position: absolute;
+    top: 80px;
+    width: 100px;
+    height: 40px;
+    background-color:gold;
+    border: 3px solid blue;
+    opacity: 0;
+  }
+
+  /* + 選擇鄰近的下一個元件 */
+  /* 選擇鄰近的下一個元件，其 class 包含 div3 */
+  .div3:hover,
+  .div2:hover+.div3 {
+    opacity: 1;
+  }
+
+  /* 其他設定 */
+  a:link,
+  a:visited {
+    color: blue;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: red;
+  }
+</style>
+
+<body>
+  <div>
+    <div class="div1">
+      <div class="div2"><a href="http://www.pchome.com.tw" target="_blank">PC Home</a></div>
+      <div class="div3"><a href="http://www.google.com" target="_blank">Google</a></div>
+    </div>
+  </div>
+</body>
+</html>

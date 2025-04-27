@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dropdown</title>
+</head>
+
+<script>
+  function setup() {
+    const eles = document.querySelectorAll("#layer1>path")
+    eles.forEach((ele) => {
+      ele.addEventListener("mouseenter", () => {
+        ele.style.fill = 'red'
+        console.log(ele.id)
+      });
+      
+      ele.addEventListener("mouseleave", () => {
+        ele.style.fill = '#55d400'
+      });
+    })
+  }
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 10px;
+  }
+</style>
+
+<body onload="setup()">
+  <svg width="72.422119mm" height="75.989777mm" viewBox="0 0 72.422119 75.989777" version="1.1" id="svg1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+    <defs id="defs1" />
+    <g id="layer1">
+      <path d="m 38.711108,37.765843 v 6.750148 h 4.782734 v -6.750148 z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path29" />
+      <path d="M 0.071334,0.071334 V 31.473783 H 9.853869 V 20.523514 H 28.928573 V 0.071334 Z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path24" />
+      <path d="m 32.83809,20.523514 h 5.873018 v 17.242329 h 4.782734 V 28.814765 H 61.695038 V 6.36339 H 32.83809 Z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path27" />
+      <path d="M 24.357077,69.039041 V 51.925971 H 9.853869 V 37.636597 H 3.831674 v 31.402444 z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path34" />
+      <path d="m 43.493842,37.765843 v 6.750148 h 9.720474 v 15.70122 H 72.350787 V 28.814765 H 61.695038 v 8.951078 z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path31" />
+      <path d="M 43.493842,37.765843 H 61.695038 V 28.814765 H 43.493842 Z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path30" />
+      <path d="m 24.357077,69.039041 h 8.331835 v -17.11307 h -8.331835 z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path35" />
+      <path d="m 53.214316,60.217211 v -15.70122 h -9.720474 v 15.70122 z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path33" />
+      <path
+        d="m 53.214316,60.217211 h -9.720474 v -15.70122 h -4.782734 v 7.40998 h -6.022196 v 17.11307 h -8.331835 v 6.8794 h 28.857239 z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path32" />
+      <path d="m 32.688912,44.515991 v 7.40998 h 6.022196 v -7.40998 z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path38" />
+      <path d="m 24.357077,51.925971 h 8.331835 v -7.40998 h -8.331835 z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path37" />
+      <path d="m 24.357077,51.925971 v -7.40998 h 8.331835 V 37.636597 H 9.853869 v 14.289374 z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path36" />
+      <path d="m 32.83809,20.523514 v 17.242329 h 5.873018 V 20.523514 Z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path28" />
+      <path d="M 28.928573,20.523514 H 9.853869 v 10.950269 h 19.074704 z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path26" />
+      <path
+        d="M 28.928573,20.523514 V 31.473783 H 9.853869 v 6.162814 h 22.835043 v 6.879394 h 6.022196 V 37.765843 H 32.83809 V 20.523514 Z"
+        style="fill:#55d400;stroke:#008000;stroke-width:0.142668;paint-order:stroke fill markers" id="path25" />
+    </g>
+  </svg>
+</body>
+
+</html>

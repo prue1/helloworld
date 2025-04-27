@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="mystyle.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+</script>
+
+<style>
+  :root {
+    --s5--width: 50px;
+    --s5--height: 70px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  div.s5 {
+    width: var(--s5--width);
+    height: var(--s5--height);
+    border-radius: 10px;
+  }
+
+  .s5.container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+  .s5.container-ani {
+    transition: left 0.7s linear;
+  }
+
+  .s5.container1 {
+    background-color: red;
+  }
+
+  .s5.container2 {
+    background-color: orange;
+  }
+
+  .s5.container3 {
+    background-color: yellow;
+  }
+
+  .s5.container4 {
+    background-color: green;
+  }
+
+  .s5.container5 {
+    background-color: blue;
+  }
+
+  .s5.container6 {
+    background-color: lightskyblue;
+  }
+
+  .s5.container7 {
+    background-color: purple;
+  }
+
+  .s5.container1:hover .container {
+    top: 0px;
+    left: calc(var(--s5--width)*0.7);
+  }
+</style>
+
+<body>
+  <div>
+    <div class="s5" style="position: relative;">
+      <div class="s5 container container1">
+        <div class="s5 container container-ani container2">
+          <div class="s5 container container-ani container3">
+            <div class="s5 container container-ani container4">
+              <div class="s5 container container-ani container5">
+                <div class="s5 container container-ani container6">
+                  <div class="s5 container container-ani container7">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  div {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+  }
+
+  .container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+  .container1 {
+    background-color: purple;
+  }
+
+  .container-ani {
+    transition: left 0.3s;
+  }
+
+  .container2 {
+    background-color: cornflowerblue;
+  }
+
+  .container3 {
+    background-color: blue;
+  }
+
+  .container4 {
+    background-color: green;
+  }
+
+  .container5 {
+    background-color: yellow;
+  }
+
+  .container6 {
+    background-color: orange;
+  }
+
+  .container7 {
+    background-color: red;
+  }
+
+  .container1:hover>.container2,
+  .container2:hover>.container3,
+  .container3:hover>.container4,
+  .container4:hover>.container5,
+  .container5:hover>.container6,
+  .container6:hover>.container7 {
+    top: 0px;
+    left: 100px;
+  }
+
+  .mask1,
+  .mask2,
+  .mask3,
+  .mask4,
+  .mask5,
+  .mask6,
+  .mask7,
+  svg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: transparent;
+  }
+</style>
+
+<body>
+  <div style="position: relative;">
+    <div class="container container1">
+      <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellowgreen" />
+      </svg>
+      <div class="container container-ani container2">
+        <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellowgreen" />
+        </svg>
+        <div class="container container-ani container3">
+          <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellowgreen" />
+          </svg>
+          <div class="container container-ani container4">
+            <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellowgreen" />
+            </svg>
+            <div class="container container-ani container5">
+              <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellowgreen" />
+              </svg>
+              <div class="container container-ani container6">
+                <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellowgreen" />
+                </svg>
+                <div class="container container-ani container7">
+                  <svg width="100" height="100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellowgreen" />
+                  </svg>
+                  <div>
+                  </div>
+                  <div class="mask7"></div>
+                </div>
+                <div class="mask6"></div>
+              </div>
+              <div class="mask5"></div>
+            </div>
+            <div class="mask4"></div>
+          </div>
+          <div class="mask3"></div>
+        </div>
+        <div class="mask2"></div>
+      </div>
+      <div class="mask1"></div>
+    </div>
+  </div>
+</body>
+
+</html>

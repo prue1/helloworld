@@ -1,0 +1,54 @@
+.s5 {
+  box-sizing: border-box;
+  --s5--width: 50px;
+  --s5--height: 70px;
+}
+
+div.s5 {
+  width: var(--s5--width);
+  height: var(--s5--height);
+  border-radius: 10px;
+}
+
+.s5.container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.s5.container-ani {
+  transition: left 0.7s linear;
+}
+
+.s5.container1 {
+  background-color: red;
+}
+
+.s5.container2 {
+  background-color: orange;
+}
+
+.s5.container3 {
+  background-color: yellow;
+}
+
+.s5.container4 {
+  background-color: green;
+}
+
+.s5.container5 {
+  background-color: blue;
+}
+
+.s5.container6 {
+  background-color: lightskyblue;
+}
+
+.s5.container7 {
+  background-color: purple;
+}
+
+.s5.container1:hover .container {
+  top: 0px;
+  left: calc(var(--s5--width)*0.5);
+}

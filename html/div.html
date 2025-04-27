@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>dropdown</title>
+</head>
+
+<script>
+</script>
+<style>
+    body {
+        margin:0;;
+    }
+
+    .container {
+        position: relative;
+    }
+
+    .div1 {
+        position: absolute;
+        width: 1440px;
+        height:150px;
+        background-color:rebeccapurple;
+    }
+
+    .div2 {
+        position: absolute;
+        top:150px;
+        width:350px;
+        height:150px;
+        background-color:darkcyan;
+    }
+
+    .div3 {
+        position: absolute;
+        top:250px;
+        left:150px;
+        width:850px;
+        background-color:cornflowerblue;
+    }
+
+    div img {
+        opacity: 0.5;
+    }
+
+    @media screen and (max-width: 600px) {
+        .div1 {
+        display: flex;
+    }
+}
+</style>
+<body>
+    <div class="container">
+        <div class="div1">
+            <img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" />
+        </div>
+        <div class="div2">
+            <img src="100x100.png" /><img src="100x100.png" /><img src="100x100.png" />
+        </div>
+        <div class="div3">
+        </div>
+    </div>
+    <img src="fullscreen.png">
+</body>
+</html>

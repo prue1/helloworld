@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<style>
+  * {
+    font-family: consolas;
+    font-size: 1em;
+    /* 1em = 16px => https://www.w3schools.com/css/css_font_size.asp */
+  }
+
+  span::before {
+    /* 雙冒號(::) pseudo-elements */
+    content: '->';
+  }
+
+  /* > 大於(>)表示所有子元件 */
+  .container>*::after {
+    content: '(c)';
+  }
+
+  /* + 加號(+)表示下一個鄰接的 */
+  .class1+span {
+    color: darkcyan;
+  }
+
+  /* ~ 波浪線(~)表示以下所有 */
+  .class2~span {
+    color: gold;
+  }
+
+  /* 空格(space)表示包含在其中 */
+  .class1 .class2 {
+    color: cornflowerblue;
+  }
+
+  /* 特殊例子：空格 vs 大於 */
+  /* 空格：能套用在跨階層的情況 */
+  /* 大於：僅限於子元件 */
+  .class5 .class6 {
+    color: orange;
+  }
+
+  .class5>.class6 {
+    color: darkcyan;
+  }
+
+  .class5:hover>.class6 { /* 冒號(:) pseudo-classes  */
+    background-color: lightgreen;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <span>Hellow World.</span>
+    <span>Hellow World.</span>
+    <a href="https://www.w3schools.com/css/css_font_size.asp">CSS font size</a>
+  </div>
+  <div class="container">
+    <span class="class1">Hellow World.</span>
+    <span>Hellow World.</span>
+    <span>Hellow World.</span>
+  </div>
+  <div class="container">
+    <span class="class2">Hellow World.</span>
+    <span>Hellow World.</span>
+    <span>Hellow World.</span>
+    <a href="https://www.w3schools.com/css/css_font_size.asp">CSS font size</a>
+  </div>
+  <div class="container class1">
+    <span class="class2">Hellow World.</span>
+    <span>Hellow World.</span>
+    <span class="class2">Hellow World.</span>
+  </div>
+  <div class="class5">
+    <div class="class6">
+      --Hello World.special-1.
+      <div class="class6">
+        ----Hello World.special-2.(第3層依舊套用.class5 .class6)
+      </div>
+    </div>
+    <div class="class6">
+      --Hello World.special-3.
+    </div>
+  </div>
+</body>
+
+</html>

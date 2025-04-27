@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS flipper</title>
+</head>
+
+<script>
+
+</script>
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: 'Microsoft JhengHei';
+    font-size: 1.2em;
+  }
+
+  :root {
+    --top: 150px;
+    --left: 200px;
+    --width: 70px;
+    --height: 70px;
+    --timing: 0.1s;
+    --off-top: calc(var(--height) + 0px);
+    --off-left: calc(var(--width) + 0px);
+  }
+
+  .inner-item:hover {
+    background-color: yellowgreen;
+  }
+
+  .container {
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    width: var(--width);
+    height: var(--height);
+  }
+
+  .inner-item {
+    position: absolute;
+    width: var(--width);
+    height: var(--height);
+    border: 7px solid transparent;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .other {
+    left: 0px;
+    top: 0px;
+    transition: top calc(var(--timing)) linear, left calc(var(--timing)) linear;
+  }
+
+  .other5 {
+    background-color: darkgreen;
+  }
+
+  .other1,
+  .other3,
+  .other7,
+  .other9 {
+    background-color: darkblue;
+  }
+
+  .other1 {
+    border-top-left-radius: 30%;
+  }
+
+  .other3 {
+    border-top-right-radius: 30%;
+  }
+
+  .other7 {
+    border-bottom-left-radius: 30%;
+  }
+
+  .other9 {
+    border-bottom-right-radius: 30%;
+  }
+
+  .other2,
+  .other4,
+  .other6,
+  .other8 {
+    background-color: darkorchid;
+  }
+
+  .container:hover .other1 {
+    top: calc(-1 * var(--off-top));
+    left: calc(-1 * var(--off-left));
+    transition: top var(--timing) linear, left var(--timing) linear;
+  }
+
+  .container:hover .other3 {
+    top: calc(-1 * var(--off-top));
+    left: var(--off-left);
+    transition: top var(--timing) linear, left var(--timing) linear;
+  }
+
+  .container:hover .other7 {
+    top: var(--off-top);
+    left: calc(-1 * var(--off-left));
+    transition: top var(--timing) linear, left var(--timing) linear;
+  }
+
+  .container:hover .other9 {
+    top: var(--off-top);
+    left: var(--off-left);
+    transition: top var(--timing) linear, left var(--timing) linear;
+  }
+
+  .container:hover .other2 {
+    top: calc(-1 * var(--off-top));
+    transition: top var(--timing) linear;
+  }
+
+  .container:hover .other4 {
+    left: calc(-1 * var(--off-left));
+    transition: left var(--timing) linear;
+  }
+
+  .container:hover .other6 {
+    left: calc(var(--off-left));
+    transition: left var(--timing) linear;
+  }
+
+  .container:hover .other8 {
+    top: var(--off-top);
+    transition: top var(--timing) linear;
+  }
+
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: orange;
+    color: white;
+    border-radius: 20%;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="inner-item other other1"><span class="content">一</span>
+    </div>
+    <div class="inner-item other other3"><span class="content">三</span>
+    </div>
+    <div class="inner-item other other7"><span class="content">七</span>
+    </div>
+    <div class="inner-item other other9"><span class="content">九</span>
+    </div>
+    <div class="inner-item other other2"><span class="content">二</span>
+    </div>
+    <div class="inner-item other other4"><span class="content">四</span>
+    </div>
+    <div class="inner-item other other6"><span class="content">六</span>
+    </div>
+    <div class="inner-item other other8"><span class="content">八</span>
+    </div>
+    <div class="inner-item other other5"><span class="content">五</span>
+    </div>
+  </div>
+
+</body>
+
+</html>
